@@ -37,11 +37,14 @@ public class MoveAI : MonoBehaviour
     /// 최적화가 이런거로 되나?
     /// </summary>
     //private bool calculated = false;
-    
+
+    [Header("이동 속도")]
+    [SerializeField] private float moveDelay = 0.1f;
+
     #endregion
 
 
-    void Start()
+    void Awake()
     {
         // 뭐 빠트리고 실행시키면 귀찮으니
         if(!CheckDestinationStatus())
@@ -51,7 +54,7 @@ public class MoveAI : MonoBehaviour
     void Update()
     {
         // TODO 우앱 : 인풋에서 턴으로 바꿔야 함
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space) && !PartrolAI.isFound/*좋지 못한 코드*/)
         {
             Partrol();
         }
@@ -59,48 +62,75 @@ public class MoveAI : MonoBehaviour
 
     void Partrol()
     {
+        PositionCalculate();
         if (isXSame && isYSame)
         {
-            ++des;
+            //Debug.Log("여기에 접근했음");
+            ++des; // 배열 끝까지 가면 오류가 나긴 한데 이건 다음에
             isXSame = false;
             isYSame = false;
+            PositionCalculate();
         }
-
-        PositionCalculate();
         ToNextDestination();
     }
 
+    // 버그가 생길 수 있는 코드
     void ToNextDestination()
     {
+
+
         switch (isXSame)
         {
-            #region 참
-            case true:
-                switch(isYBigger)
+            case true: // 어차피 Y 는 실행이 되야 함
+                switch (isYBigger)
                 {
                     case true:
-                        
-                        break;
+                        transform.DOMoveY(transform.position.y + 1, moveDelay);
+                        return;
                     case false:
-
-                        break;
+                        transform.DOMoveY(transform.position.y - 1, moveDelay);
+                        return;
                 }
-                break;
-            #endregion
-
-            case false:
-                
                 break;
         }
         switch (isYSame)
         {
-            case true:
-
-                break;
-            case false:
-
+            case true: // 어차피 X 는 실행이 되야 함
+                switch (isXBigger)
+                {
+                    case true:
+                        transform.DOMoveX(transform.position.x + 1, moveDelay);
+                        return;
+                    case false:
+                        transform.DOMoveX(transform.position.x - 1, moveDelay);
+                        return;
+                }
                 break;
         }
+
+        #region 임시로 만든 것
+        if (isYBigger && isXBigger)
+        {
+            Debug.Log("1");
+            transform.DOMove(new Vector3(transform.position.x + 1, transform.position.y + 1), moveDelay);
+        }
+        else if (isYBigger && !isXBigger)
+        {
+            Debug.Log("2");
+            transform.DOMove(new Vector3(transform.position.x - 1, transform.position.y + 1), moveDelay);
+        }
+        else if (!isYBigger && isXBigger)
+        {
+            Debug.Log("3");
+            transform.DOMove(new Vector3(transform.position.x + 1, transform.position.y - 1), moveDelay);
+        }
+        else
+        {
+            Debug.Log("4");
+            transform.DOMove(new Vector3(transform.position.x - 1, transform.position.y - 1), moveDelay);
+        }
+        #endregion
+
     }
 
     void PositionCalculate()
@@ -109,34 +139,39 @@ public class MoveAI : MonoBehaviour
         #region 만약 목적지 x좌표가 같거나 y좌표가 같다는 판단용
         if (!isXSame)
         {
-            if (destination[des].transform.position.x == destination[des + 1].transform.position.x)
+            if (transform.position.x == destination[des + 1].transform.position.x)
+            {
+                Debug.Log("XSame");
                 isXSame = true;
+            }
         }
         if (!isYSame)
         {
-            if (destination[des].transform.position.y == destination[des + 1].transform.position.y)
+            if (transform.position.y == destination[des + 1].transform.position.y)
+            {
+                Debug.Log("YSame");
                 isYSame = true;
+            }
         }
         #endregion // 이게 의미가 있는지는 모르겠는데 일단 해봤음
         #region 목적지 좌표가 현 좌표보다 큰지 작은지 판단용
         if (!isXSame)
         {
-            if (destination[des].transform.position.x < destination[des + 1].transform.position.x)
-                isXBigger = false;
+            if (transform.position.x < destination[des + 1].transform.position.x)
+                isXBigger = true;
         }
         if (!isYSame)
         {
-            if (destination[des].transform.position.y < destination[des + 1].transform.position.y)
-                isYBigger = false;
+            if (transform.position.y < destination[des + 1].transform.position.y)
+                isYBigger = true;
         }
         #endregion
-        //calculated = true;
     }
 
 
     /// <summary>
     /// 목적지 검사.
-    /// !빌드할때는 제외해야 함! (안해도 문제는 없지만)
+    /// 에디터용 코드
     /// </summary>
     /// <returns>문제 없을 시 true</returns>
     bool CheckDestinationStatus()

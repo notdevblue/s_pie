@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class TurnAI : MonoBehaviour
+public class StatusAI : MonoBehaviour
 {
-
+    
 }

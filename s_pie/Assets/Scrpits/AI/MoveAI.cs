@@ -54,7 +54,7 @@ public class MoveAI : MonoBehaviour
     void Update()
     {
         // TODO 우앱 : 인풋에서 턴으로 바꿔야 함
-        if(Input.GetKeyUp(KeyCode.Space) && !PartrolAI.isFound/*좋지 못한 코드*/)
+        if(Input.GetKeyUp(KeyCode.Space) && !PartrolAI.getIsFound/*좋지 못한 코드?*/)
         {
             Partrol();
         }
@@ -111,22 +111,22 @@ public class MoveAI : MonoBehaviour
         #region 임시로 만든 것
         if (isYBigger && isXBigger)
         {
-            Debug.Log("1");
+            //Debug.Log("1");
             transform.DOMove(new Vector3(transform.position.x + 1, transform.position.y + 1), moveDelay);
         }
         else if (isYBigger && !isXBigger)
         {
-            Debug.Log("2");
+            //Debug.Log("2");
             transform.DOMove(new Vector3(transform.position.x - 1, transform.position.y + 1), moveDelay);
         }
         else if (!isYBigger && isXBigger)
         {
-            Debug.Log("3");
+            //Debug.Log("3");
             transform.DOMove(new Vector3(transform.position.x + 1, transform.position.y - 1), moveDelay);
         }
         else
         {
-            Debug.Log("4");
+            //Debug.Log("4");
             transform.DOMove(new Vector3(transform.position.x - 1, transform.position.y - 1), moveDelay);
         }
         #endregion
@@ -158,12 +158,24 @@ public class MoveAI : MonoBehaviour
         if (!isXSame)
         {
             if (transform.position.x < destination[des + 1].transform.position.x)
+            {
                 isXBigger = true;
+            }
+            else
+            {
+                isXBigger = false;
+            }
         }
         if (!isYSame)
         {
             if (transform.position.y < destination[des + 1].transform.position.y)
+            {
                 isYBigger = true;
+            }
+            else
+            {
+                isYBigger = false;
+            }
         }
         #endregion
     }

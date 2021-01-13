@@ -8,8 +8,10 @@ using UnityEngine;
 /// </summary>
 public class PartrolAI : MonoBehaviour
 {
-    public static bool isFound = false; // 좋지 못한 코드
+    private static bool isFound = false; // 좋지 못한 코드
+    public static bool getIsFound { get { return isFound; } }
     private bool isAINoticedPlayer = false;
+    
     private int notice = 0;
 
     

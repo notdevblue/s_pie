@@ -10,6 +10,22 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Vector2 limitMin = Vector2.zero; //Y 제한
     private Vector2 targetPosition = Vector2.zero; //이동할 좌표
 
+
+    #region 영상용 코드
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+            ClickUp();
+        if (Input.GetKeyDown(KeyCode.S))
+            ClickDown();
+        if (Input.GetKeyDown(KeyCode.A))
+            ClickLeft();
+        if (Input.GetKeyDown(KeyCode.D))
+            ClickRight();
+    }
+    #endregion
+
+
     public void ClickUp() //위에 있는 버튼을 눌렀을때
     {
         if (transform.localPosition.y < limitMax.y) //오브젝트 앞에 길이 있는지 검사

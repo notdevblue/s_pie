@@ -6,10 +6,10 @@ using UnityEngine;
 /// 클래스 이름이 좀 애매하긴 한데,
 /// 플레이어를 탐색하는 용도의 클래스 입니다.
 /// </summary>
-public class PartrolAI : MonoBehaviour
+public class NoticeAI : MonoBehaviour
 {
-    private static bool isFound = false; // 좋지 못한 코드
-    public static bool getIsFound { get { return isFound; } }
+    private static bool isFound = false;
+    public static bool getIsFound { get { return isFound; } } // 으흠.
     private bool isAINoticedPlayer = false;
     
     private int notice = 0;
@@ -43,25 +43,34 @@ public class PartrolAI : MonoBehaviour
 
     void LookForPlayer()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) > detectRange)
+        #region 한번 갈아 엎어야 함
+        if (Vector3.Distance(transform.position, player.transform.position) > detectRange)
         {
-            Debug.Log("플레이어 발견되지 않음");
-            ++notice;
+            --notice;
             isFound = false;
         }
         else
         {
-            Debug.Log("플레이어 발견");
-            --notice;
-            isFound = true;
+            // 뒤에 있으면 못 보는게 정상이니
+            if(player.transform.position.x > transform.position.x)
+            {
+                ++notice;
+                isFound = true;
+            }
         }
+        #endregion
+        // 이유: 사람 실제 시아는 앞을 제일 잘 봄
+        // 코드: 반원 안에 들어오면 다 발견함
+        // 결론: 기능이 사실적이지 않음
+        // 망상: 삼각함수 각?
     }
+
     void NoticePlayer()
     {
         if(notice == 3)
         {
             isAINoticedPlayer = true;
-            Debug.Log("AI 가 플레이어를 발견함");
+            //Debug.Log("AI 가 플레이어를 발견함");
         }
     }
 

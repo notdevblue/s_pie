@@ -21,28 +21,30 @@ destination[2] = (3, 2);
 /// </summary>
 public class MoveAI : MonoBehaviour
 {
-    // 이걸 Vector2 보다는 게임오브젝트로 하는게 더 편할거 같음
-    //[SerializeField] Vector2[] destination;
-    [Header("AI가 목표로 가는 목적지들.")]
-    [SerializeField] GameObject[] destination;
-
     #region 목적지 이동 위한 변수
-    private int des = 0;
-    private bool isXSame = false;
-    private bool isYSame = false;
-    private bool isXBigger = false;
-    private bool isYBigger = false;
 
-    /// <summary>
-    /// 최적화가 이런거로 되나?
-    /// </summary>
-    //private bool calculated = false;
-
+    [Header("AI가 목표로 가는 목적지들.")]
+    [SerializeField] private GameObject[] destination    = null;
     [Header("이동 속도")]
-    [SerializeField] private float moveDelay = 0.1f;
+    [SerializeField] private float        moveDelay      = 0.1f;
+
+    private int  des        = 0;     // 배열 순환용
+    private bool isToGo     = true;  // 배열 순환용
+    private bool isToGoBack = false; // 배열 순환용
+    private bool isXSame    = false; // 이동용
+    private bool isYSame    = false; // 이동용
+    private bool isXBigger  = false; // 이동용
+    private bool isYBigger  = false; // 이동용
+
+    // isToGo 와 isToGoBack 의 초기값
+    /*
+    if(isToGo == true)
+        배열 앞에서 뒤로 출발
+    else if(isToGoBack == true)
+        배열 뒤에서 앞으로 출발
+    */
 
     #endregion
-
 
     void Awake()
     {
@@ -54,7 +56,7 @@ public class MoveAI : MonoBehaviour
     void Update()
     {
         // TODO 우앱 : 인풋에서 턴으로 바꿔야 함
-        if(Input.GetKeyUp(KeyCode.Space) && !PartrolAI.getIsFound/*좋지 못한 코드?*/)
+        if(Input.GetKeyUp(KeyCode.Space) && !NoticeAI.getIsFound/*좋지 못한 코드?*/)
         {
             Partrol();
         }
@@ -63,22 +65,13 @@ public class MoveAI : MonoBehaviour
     void Partrol()
     {
         PositionCalculate();
-        if (isXSame && isYSame)
-        {
-            //Debug.Log("여기에 접근했음");
-            ++des; // 배열 끝까지 가면 오류가 나긴 한데 이건 다음에
-            isXSame = false;
-            isYSame = false;
-            PositionCalculate();
-        }
+        CheckifArrived();
         ToNextDestination();
     }
 
-    // 버그가 생길 수 있는 코드
     void ToNextDestination()
     {
-
-
+        #region 직선 이동
         switch (isXSame)
         {
             case true: // 어차피 Y 는 실행이 되야 함
@@ -91,7 +84,7 @@ public class MoveAI : MonoBehaviour
                         transform.DOMoveY(transform.position.y - 1, moveDelay);
                         return;
                 }
-                break;
+                break; // 이거 안해주면 에러가 나는 신기한 C#
         }
         switch (isYSame)
         {
@@ -105,10 +98,11 @@ public class MoveAI : MonoBehaviour
                         transform.DOMoveX(transform.position.x - 1, moveDelay);
                         return;
                 }
-                break;
+                break; // 이거 안해주면 에러가 나는 신기한 C#
         }
+        #endregion
 
-        #region 임시로 만든 것
+        #region 대각선 이동
         if (isYBigger && isXBigger)
         {
             //Debug.Log("1");
@@ -130,18 +124,58 @@ public class MoveAI : MonoBehaviour
             transform.DOMove(new Vector3(transform.position.x - 1, transform.position.y - 1), moveDelay);
         }
         #endregion
-
     }
+
+    // 도움이 필요해요: 이거는 다른 클레스에서 일 해야 할 듯 한데 뭔가 따로 뺄수 없나요..
+    void CheckifArrived()
+    {
+        if (isXSame && isYSame)
+        {
+            #region 배열 끝 또는 시작 도착 여부
+            /******************************************
+             * 매우 중요함!
+             * 더하거나 빼는 값을 바꾸면 절대로 안 돼요...
+             * -우엽
+            *******************************************/
+            if (destination.Length == des + 2) 
+            {
+                isToGoBack = true;
+                isToGo = false;
+                // 되돌아가는 과정
+            }
+            else if (des == -1)
+            {
+                isToGo = true;
+                isToGoBack = false;
+                // 가는 과정
+            }
+            #endregion
+            #region 배열 끝 또는 시작으로 이동
+            if (isToGo)
+            {
+                ++des;
+            }
+            else if (isToGoBack)
+            {
+                --des;
+            }
+            #endregion
+            isXSame = false;
+            isYSame = false;
+            PositionCalculate(); // 이거 없어도 문제는 없는데 AI 가 도착 후 한번 재미있게 움직임
+        }
+    }
+    //
+
 
     void PositionCalculate()
     {
-        // 뭔가 잘못 쓴거 같은데
         #region 만약 목적지 x좌표가 같거나 y좌표가 같다는 판단용
         if (!isXSame)
         {
             if (transform.position.x == destination[des + 1].transform.position.x)
             {
-                Debug.Log("XSame");
+                //Debug.Log("XSame");
                 isXSame = true;
             }
         }
@@ -149,7 +183,7 @@ public class MoveAI : MonoBehaviour
         {
             if (transform.position.y == destination[des + 1].transform.position.y)
             {
-                Debug.Log("YSame");
+                //Debug.Log("YSame");
                 isYSame = true;
             }
         }
@@ -180,14 +214,14 @@ public class MoveAI : MonoBehaviour
         #endregion
     }
 
-
     /// <summary>
     /// 목적지 검사.
-    /// 에디터용 코드
     /// </summary>
     /// <returns>문제 없을 시 true</returns>
     bool CheckDestinationStatus()
     {
+        #region 에디터에서만 실행되는 구역
+#if UNITY_EDITOR
         // 순찰 지점이 2개 미만이면 순찰을 못 돔
         if (destination.Length < 2)
         {
@@ -204,12 +238,13 @@ public class MoveAI : MonoBehaviour
                 return false;
             }
         }
+#endif
+        #endregion
 
-        #region AI 좌표와 첫 순찰 좌표가 다를 시 오류 발생 (꼭 필요한지 모르겠)
+        #region AI 좌표와 첫 순찰 좌표가 다를 시 옮겨 줌
         if (destination[0].transform.position != transform.position)
         {
-            UnityEditor.EditorUtility.DisplayDialog("AI 위치 오류", "AI 의 첫 순찰 지점과 현제 AI 의 위치가 다릅니다.", "확인");
-            return false;
+            transform.position = destination[0].transform.position;
         }
         #endregion // 이게 꼭 필요한건가 궁금하기는 한데
         return true;

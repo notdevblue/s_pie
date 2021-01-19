@@ -11,8 +11,10 @@ public class ClickerManager : MonoBehaviour
 
     [SerializeField]
     private bool gameIsOver = false;
+    // gameIsOver가 ture가 될시 게임오버 혹은 그전의 화면으로 돌아가고 패널티 부여
     [SerializeField]
     private bool gameIsClear = false;
+    // gameIsClear가 true가 될시 곧바로 이전의 화면으로 넘어가도록 할것.
 
     private void Start()
     {

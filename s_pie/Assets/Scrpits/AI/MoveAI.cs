@@ -62,6 +62,17 @@ public class MoveAI : MonoBehaviour
         }
     }
 
+    //코드 추가한것
+    #region AI가 턴으로 움직이도록 만든 코드
+    public void AIMove()
+    {
+        if (!NoticeAI.getIsFound)
+        {
+            Partrol();
+        }
+    }
+    #endregion
+
     void Partrol()
     {
         PositionCalculate();

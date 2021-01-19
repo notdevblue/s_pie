@@ -32,13 +32,10 @@ public class NoticeAI : MonoBehaviour
         #endregion
     }
 
-    private void Update()
+    public void AILookUp()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            LookForPlayer();
-            NoticePlayer();
-        }
+        LookForPlayer();
+        NoticePlayer();
     }
 
     void LookForPlayer()

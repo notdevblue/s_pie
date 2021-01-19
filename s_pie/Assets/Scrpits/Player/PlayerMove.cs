@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    // 우앱: 플레이어가 타일 뒤로 들어가는 문제 때문에 Vector3 로 바꿨슴
+
     //이동 관련 변수
     [SerializeField] private float distance = 1f;  //이동거리
-    [SerializeField] private Vector2 limitMax = Vector2.zero; //X 제한
-    [SerializeField] private Vector2 limitMin = Vector2.zero; //Y 제한
-    private Vector2 targetPosition = Vector2.zero; //이동할 좌표
+    [SerializeField] private Vector3 limitMax = Vector3.zero; //X 제한
+    [SerializeField] private Vector3 limitMin = Vector3.zero; //Y 제한
+    private Vector3 targetPosition = Vector3.zero; //이동할 좌표
 
     private TurnManager turnManager = null; //플레이어 턴인지 아닌지 확인하기 위해서 만듬
 
     private void Awake()
     {
         turnManager = FindObjectOfType<TurnManager>();
+        #region 널레퍼런스 방지용 코드 (유니티 에디터에서만 실행됨)
+#if UNITY_EDITOR
+        NullCheck();
+#endif
+        #endregion
     }
 
-    #region 영상용 코드
+
+    #region 널레퍼런스 방지용 코드 (유니티 에디터에서만 실행됨)
+#if UNITY_EDITOR
+    void NullCheck()
+    {
+        if(turnManager == null)
+        {
+            UnityEditor.EditorUtility.DisplayDialog("턴 메니저 오류", "턴 메니저가 씬에서 발견되지 않았습니다.", "확인");
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+    }
+#endif
+    #endregion
+    #region 영상용 코드 (WASD 움직임)
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))

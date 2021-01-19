@@ -8,18 +8,18 @@ using UnityEngine;
 /// </summary>
 public class NoticeAI : MonoBehaviour
 {
-    private static bool isFound = false;
-    public static bool getIsFound { get { return isFound; } } // 으흠.
-    private bool isAINoticedPlayer = false;
-    
-    private int notice = 0;
-
-    
-
-    [SerializeField] private GameObject player;
+    #region 변수들
+    private        int  notice            = 0;
+    private static bool isFound           = false;
+    private static bool isAINoticedPlayer = false;
+    public  static bool getIsFound        { get { return isFound; } } // 으으흠.
+    public  static bool getIsAINoticed    { get { return isFound; } } // 으흐음.
 
     [Header("플레이어를 인식할 거리")]
-    [SerializeField] private float detectRange = 1.0f;
+    [SerializeField] private float      detectRange = 1.0f;
+    [SerializeField] private GameObject player      = null;
+    #endregion
+
 
     void Awake()
     {
@@ -43,7 +43,12 @@ public class NoticeAI : MonoBehaviour
 
     void LookForPlayer()
     {
-        #region 한번 갈아 엎어야 함
+        #region 한번 갈아 엎어야 했었음
+        // 이유: 사람 실제 시아는 앞을 제일 잘 봄
+        // 코드: 반원 안에 들어오면 다 발견함
+        // 결론: 기능이 사실적이지 않음
+        // 망상: 삼각함수 각?
+
         if (Vector3.Distance(transform.position, player.transform.position) > detectRange)
         {
             --notice;
@@ -51,18 +56,14 @@ public class NoticeAI : MonoBehaviour
         }
         else
         {
-            // 뒤에 있으면 못 보는게 정상이니
-            if(player.transform.position.x > transform.position.x)
-            {
+            // 뒤에 있으면 못 보는게 정상이었지만 맵이 체스판 모양이니.
+            //if(player.transform.position.x > transform.position.x)
+            //{
                 ++notice;
                 isFound = true;
-            }
+            //}
         }
         #endregion
-        // 이유: 사람 실제 시아는 앞을 제일 잘 봄
-        // 코드: 반원 안에 들어오면 다 발견함
-        // 결론: 기능이 사실적이지 않음
-        // 망상: 삼각함수 각?
     }
 
     void NoticePlayer()

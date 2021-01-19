@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ClickerManager : MonoBehaviour
+{ 
+    private int break1 = 6; // 살짝 금감
+    private int break2 = 3; // 많이 금감
+
+    private float clickTime = 2.7f;
+
+    [SerializeField]
+    private bool gameIsOver = false;
+    [SerializeField]
+    private bool gameIsClear = false;
+
+    private void Start()
+    {
+        StartCoroutine(GameOverCheck());
+    }
+    public void SetGameIsOver(bool a)
+    {
+        gameIsOver = a;
+    }
+    public bool GetGameIsOver()
+    {
+        return gameIsOver;
+    }
+    public void SetGameIsClear(bool a)
+    {
+        gameIsClear = a;
+    }
+    public bool GetGameIsClear()
+    {
+        return gameIsClear;
+    }
+    public int GetBreak1()
+    {
+        return break1;
+    }
+    public int GetBreak2()
+    {
+        return break2;
+    }
+    IEnumerator GameOverCheck()
+    {
+        yield return new WaitForSeconds(clickTime);
+        gameIsOver = true;
+    }
+
+}

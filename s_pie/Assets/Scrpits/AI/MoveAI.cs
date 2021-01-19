@@ -68,7 +68,10 @@ public class MoveAI : MonoBehaviour
     {
         if (!NoticeAI.getIsFound)
         {
-            Partrol();
+            if(destination.Length > 1)
+            {
+                Partrol();
+            }
         }
     }
     #endregion

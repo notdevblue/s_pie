@@ -61,7 +61,7 @@ public class MainButtonManager : MonoBehaviour
         tipsArray[5] = "...";
         tipsArray[6] = "...이거 읽기는 해요?";
         tipsArray[7] = "크기의 비율을 중시해서 물건 크기가 다 일정해요...";
-        tipsArray[8] = "고양이에게 츄르는 주면 좋아할거라고 해요...";
+        tipsArray[8] = "공격은 나중에 해봅시다...";
     }
     #endregion
 

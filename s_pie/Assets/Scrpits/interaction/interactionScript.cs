@@ -8,6 +8,7 @@ public class interactionScript : MonoBehaviour
 {
 
 	GameObject Line; //테두리
+	public Item item;
 
 	public enum CurInterationName
     {
@@ -31,7 +32,7 @@ public class interactionScript : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{ 
 			//Line.SetActive(true);
-			UM.SetInteractionBtn(curInterationName.ToString(), true);
+			UM.SetInteractionBtn(curInterationName.ToString(), true, item);
 		}
 	}
 	void OnTriggerExit2D(Collider2D col)
@@ -39,7 +40,7 @@ public class interactionScript : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{
 			//Line.SetActive(false);
-			UM.SetInteractionBtn(null, false);
+			UM.SetInteractionBtn(null, false, null);
 		}
 	}
 

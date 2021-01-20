@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private GameManager gameManager = null;
+    private MazeManager mazeManager = null;
 
     private CrossroadScript []crossRoadScript;
 
@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
+        mazeManager = FindObjectOfType<MazeManager>();
     }
 
     // Update is called once per frame
@@ -97,13 +97,13 @@ public class PlayerScript : MonoBehaviour
     }
     void SetFirstDistances()
     {
-        crossRoadScriptDistance = new float[gameManager.GetCrossroadScriptNum()];
+        crossRoadScriptDistance = new float[mazeManager.GetCrossroadScriptNum()];
     }
     void SetDistance()
     {
         float crossroadDistance = 10f;
         CrossroadScript b = null;
-        for(int i = 0; i < gameManager.GetCrossroadScriptNum(); i++)
+        for(int i = 0; i < mazeManager.GetCrossroadScriptNum(); i++)
         {
             crossRoadScriptDistance[i] = Vector2.Distance(crossRoadScript[i].GetCurretnPosition(), currentPosition);
             if(crossRoadScriptDistance[i] < crossroadDistance)

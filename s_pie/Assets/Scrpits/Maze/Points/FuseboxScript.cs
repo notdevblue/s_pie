@@ -6,7 +6,7 @@ public class FuseboxScript : MonoBehaviour
 {
     private Vector2 currentPosition = Vector2.zero;
     private PlayerScript playerScript = null;
-    private GameManager gameManager = null;
+    private MazeManager mazeManager = null;
     private SpriteRenderer spriteRenderer = null;
 
     private bool playerCome = false;
@@ -16,7 +16,7 @@ public class FuseboxScript : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerScript = FindObjectOfType<PlayerScript>();
-        gameManager = GameManager.Instance;
+        mazeManager = FindObjectOfType<MazeManager>();
 
         spriteRenderer.sprite = playerScript.GetFuseboxSprite();
 
@@ -37,9 +37,9 @@ public class FuseboxScript : MonoBehaviour
         {
             playerCome = true;
             int a;
-            a = gameManager.GetComeFuseboxNum();
+            a = mazeManager.GetComeFuseboxNum();
             a++;
-            gameManager.SetComeFuseboxNum(a);
+            mazeManager.SetComeFuseboxNum(a);
             spriteRenderer.sprite = null;
 
         }

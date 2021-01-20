@@ -7,7 +7,7 @@ public class CrossroadScript : MonoBehaviour
 
     private Vector2 currentPosition = Vector2.zero;
 
-    private GameManager gameManager = null;
+    private MazeManager mazeManager = null;
     private PlayerScript playerScript = null;
     private SpriteRenderer spriteRenderer = null;
 
@@ -53,7 +53,7 @@ public class CrossroadScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
+        mazeManager = FindObjectOfType<MazeManager>();
         playerScript = FindObjectOfType<PlayerScript>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -164,30 +164,30 @@ public class CrossroadScript : MonoBehaviour
     void NumSet()
     {
         int a;
-        a = gameManager.GetCrossroadScriptNum();
+        a = mazeManager.GetCrossroadScriptNum();
         a++;
         unitId = a;
-        gameManager.SetCrossroadScriptNum(a);
+        mazeManager.SetCrossroadScriptNum(a);
     }
     void IsFirstPosition()
     {
-        if(unitId == gameManager.GetPlayerPositionId() && canPlayerPositionSet)
+        if(unitId == mazeManager.GetPlayerPositionId() && canPlayerPositionSet)
         {
             FirstPositionSet();
         }
     }
     void IsGoalScript()
     {
-        bool fusebox = (gameManager.GetComeFuseboxNum() >= 3);
+        bool fusebox = (mazeManager.GetComeFuseboxNum() >= 3);
         //Debug.Log(gameManager.GetGoalScriptId());
-        if (unitId == gameManager.GetGoalScriptId() && canGoalScriptSet && fusebox)
+        if (unitId == mazeManager.GetGoalScriptId() && canGoalScriptSet && fusebox)
         {
             GoalScript();
         }
     }
     void IsFuseboxScript()
     {
-        bool fuseId = (gameManager.GetFuseboxId1() == unitId || gameManager.GetFuseboxId2() == unitId || gameManager.GetFuseboxId3() == unitId);
+        bool fuseId = (mazeManager.GetFuseboxId1() == unitId || mazeManager.GetFuseboxId2() == unitId || mazeManager.GetFuseboxId3() == unitId);
         if(fuseId && canFuseboxScriptSet)
         {
             FuseboxScript();

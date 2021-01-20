@@ -7,14 +7,14 @@ public class GoalScript : MonoBehaviour
     private Vector2 currentPosition = Vector2.zero;
 
     private PlayerScript playerScript = null;
-    private GameManager gameManager = null;
+    private MazeManager mazeManager = null;
 
     private SpriteRenderer spriteRenderer = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
+        mazeManager = FindObjectOfType<MazeManager>();
         playerScript = FindObjectOfType<PlayerScript>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -34,7 +34,7 @@ public class GoalScript : MonoBehaviour
     void ClearCheck()
     {
         if (playerScript.GetCurrentPosition() == currentPosition)
-            gameManager.SetIsClear(true);
+            mazeManager.SetIsClear(true);
     }
     public void SetCurrentPosition(Vector2 a)
     {

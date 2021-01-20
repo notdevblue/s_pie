@@ -140,7 +140,7 @@ public class MoveAI : MonoBehaviour
         #endregion
     }
 
-    // 도움이 필요해요: 이거는 다른 클레스에서 일 해야 할 듯 한데 뭔가 따로 뺄수 없나요..
+    
     void CheckifArrived()
     {
         if (isXSame && isYSame)
@@ -179,7 +179,6 @@ public class MoveAI : MonoBehaviour
             PositionCalculate(); // 이거 없어도 문제는 없는데 AI 가 도착 후 한번 재미있게 움직임
         }
     }
-    //
 
 
     void PositionCalculate()
@@ -258,7 +257,7 @@ public class MoveAI : MonoBehaviour
         #region AI 좌표와 첫 순찰 좌표가 다를 시 옮겨 줌
         if (destination[0].transform.position != transform.position)
         {
-            transform.position = destination[0].transform.position;
+            transform.position = new Vector3(destination[0].transform.position.x, destination[0].transform.position.y, transform.position.z);
         }
         #endregion // 이게 꼭 필요한건가 궁금하기는 한데
         return true;

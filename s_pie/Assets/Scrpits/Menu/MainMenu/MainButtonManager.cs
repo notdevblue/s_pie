@@ -52,7 +52,7 @@ public class MainButtonManager : MonoBehaviour
     #region 로딩시 나오는 팁 (Awake 포함됨)
     private void Awake()
     {
-        tipsArray = new string[8];
+        tipsArray = new string[9];
         tipsArray[0] = "공격은 나중에 해봅시다...";
         tipsArray[1] = "정식 요원은 연봉이 3억원이라고 해요...";
         tipsArray[2] = "수습 요원은 연봉이 5천만원이라고 해요...";
@@ -61,6 +61,7 @@ public class MainButtonManager : MonoBehaviour
         tipsArray[5] = "...";
         tipsArray[6] = "...이거 읽기는 해요?";
         tipsArray[7] = "크기의 비율을 중시해서 물건 크기가 다 일정해요...";
+        tipsArray[8] = "공격은 나중에 해봅시다...";
     }
     #endregion
 
@@ -224,7 +225,7 @@ public class MainButtonManager : MonoBehaviour
     // 랜덤으로 tipsArray 에서 불러온 원소를 tips 에 넣음
     private void RandomlyPickTip()
     {
-        int tip = (int)Random.Range(0.0f, 8.9f);
+        int tip = (int)Random.Range(0f, 8.5f);
         tips.text = tipsArray[tip];
     }
 }

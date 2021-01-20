@@ -6,10 +6,19 @@ using static UIManager;
 
 public class interactionScript : MonoBehaviour
 {
-	//public enum Type { Customize, Mission, Emergency };
-	//public Type type;
+
 	GameObject Line; //테두리
-	public int curInteractionNum;
+
+	public enum CurInterationName
+    {
+		Awl,
+		Thur,
+		Cat_01,
+		Cat_02,
+		EmptyBox
+	}
+
+	public CurInterationName curInterationName;
 
 
 	void Start()
@@ -22,7 +31,7 @@ public class interactionScript : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{ 
 			//Line.SetActive(true);
-			UM.SetInteractionBtn(curInteractionNum, true);
+			UM.SetInteractionBtn(curInterationName.ToString(), true);
 		}
 	}
 	void OnTriggerExit2D(Collider2D col)
@@ -30,7 +39,7 @@ public class interactionScript : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{
 			//Line.SetActive(false);
-			UM.SetInteractionBtn(0, false);
+			UM.SetInteractionBtn(null, false);
 		}
 	}
 

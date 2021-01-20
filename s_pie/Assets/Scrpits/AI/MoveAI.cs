@@ -28,13 +28,15 @@ public class MoveAI : MonoBehaviour
     [Header("이동 속도")]
     [SerializeField] private float        moveDelay      = 0.1f;
 
-    private int  des        = 0;     // 배열 순환용
-    private bool isToGo     = true;  // 배열 순환용
-    private bool isToGoBack = false; // 배열 순환용
-    private bool isXSame    = false; // 이동용
-    private bool isYSame    = false; // 이동용
-    private bool isXBigger  = false; // 이동용
-    private bool isYBigger  = false; // 이동용
+    private        int  des          = 0;                          // 배열 순환용
+    private        bool isToGo       = true;                       // 배열 순환용
+    private        bool isToGoBack   = false;                      // 배열 순환용
+    private        bool isXSame      = false;                      // 이동용
+    private        bool isYSame      = false;                      // 이동용
+    private static bool isXBigger    = false;                      // 이동용
+    private static bool isYBigger    = false;                      // 이동용
+    public  static bool getIsXBigger { get { return isXBigger; } } // 외부 사용용
+    public  static bool getIsYBigger { get { return isYBigger; } } // 외부 사용용
 
     // isToGo 와 isToGoBack 의 초기값
     /*
@@ -45,21 +47,15 @@ public class MoveAI : MonoBehaviour
     */
 
     #endregion
+    #region 에니메이션용 변수
+    private SpriteAI anim = null;
+    #endregion
 
     void Awake()
     {
         // 뭐 빠트리고 실행시키면 귀찮으니
         if(!CheckDestinationStatus())
             UnityEditor.EditorApplication.isPlaying = false;
-    }
-
-    void Update()
-    {
-        // TODO 우앱 : 인풋에서 턴으로 바꿔야 함
-        if(Input.GetKeyUp(KeyCode.Space) && !NoticeAI.getIsFound/*좋지 못한 코드?*/)
-        {
-            Partrol();
-        }
     }
 
     //코드 추가한것
@@ -86,20 +82,24 @@ public class MoveAI : MonoBehaviour
     void ToNextDestination()
     {
         #region 직선 이동
+
         switch (isXSame)
         {
             case true: // 어차피 Y 는 실행이 되야 함
                 switch (isYBigger)
                 {
                     case true:
+                        anim.AIUp();   // 점점 꼬여가는 코드
                         transform.DOMoveY(transform.position.y + 1, moveDelay);
                         return;
                     case false:
+                        anim.AIDown(); // 이것이 밤 코딩
                         transform.DOMoveY(transform.position.y - 1, moveDelay);
                         return;
                 }
                 break; // 이거 안해주면 에러가 나는 신기한 C#
         }
+
         switch (isYSame)
         {
             case true: // 어차피 X 는 실행이 되야 함
@@ -114,8 +114,8 @@ public class MoveAI : MonoBehaviour
                 }
                 break; // 이거 안해주면 에러가 나는 신기한 C#
         }
-        #endregion
 
+        #endregion
         #region 대각선 이동
         if (isYBigger && isXBigger)
         {
@@ -250,6 +250,13 @@ public class MoveAI : MonoBehaviour
                 UnityEditor.EditorUtility.DisplayDialog("AI 목적지 오류", "AI 의 순착 지점이 비어있습니다.", "확인");
                 return false;
             }
+        }
+
+        // 에니메이션 스크립트 추가 안 되어있을때
+        if(anim == null)
+        {
+            UnityEditor.EditorUtility.DisplayDialog("AI 에니메이션 오류", "SpriteAI 스크립트가 AI에 추가되어있는지 확인하세요.", "확인");
+            return false;
         }
 #endif
         #endregion

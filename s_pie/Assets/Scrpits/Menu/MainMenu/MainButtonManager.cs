@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -48,22 +46,56 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private GameObject achievementPoint;
     private readonly Vector3            MAIN_CAMERA_POINT = new Vector3(0.0f, 0.0f, -10.0f);
     #endregion
+    #region 버튼 이동 위한 변수들
+    [Header("임무 선택 버튼 기본 / 아웃 위치")]
+    [SerializeField] private GameObject levelPos;
+    [SerializeField] private GameObject levelPosOut;
+    private Vector3 levelTargetPos;
+    [Header("업적 버튼 기본 / 아웃 위치")]
+    [SerializeField] private GameObject achievePos;
+    [SerializeField] private GameObject achievePosOut;
+    private Vector3 achieveTargetPos;
+    [Header("게임 종료 버튼 기본 / 아웃 위치")]
+    [SerializeField] private GameObject disconPos;
+    [SerializeField] private GameObject disconPosOut;
+    private Vector3 disconTargetPos;
+
     #endregion
-    #region 로딩시 나오는 팁 (Awake 포함됨)
+    #endregion
+    
     private void Awake()
     {
-        tipsArray = new string[9];
-        tipsArray[0] = "공격은 나중에 해봅시다...";
-        tipsArray[1] = "정식 요원은 연봉이 3억원이라고 해요...";
-        tipsArray[2] = "수습 요원은 연봉이 5천만원이라고 해요...";
-        tipsArray[3] = "우리 요원은 차가 없어요...";
-        tipsArray[4] = "4개발 1아트 팀에서 나온 게임이에요...";
-        tipsArray[5] = "...";
-        tipsArray[6] = "...이거 읽기는 해요?";
-        tipsArray[7] = "크기의 비율을 중시해서 물건 크기가 다 일정해요...";
-        tipsArray[8] = "공격은 나중에 해봅시다...";
+        #region 로딩시 나오는 팁
+        {
+            tipsArray = new string[9];
+            tipsArray[0] = "공격은 나중에 해봅시다...";
+            tipsArray[1] = "정식 요원은 연봉이 3억원이라고 해요...";
+            tipsArray[2] = "수습 요원은 연봉이 5천만원이라고 해요...";
+            tipsArray[3] = "우리 요원은 차가 없어요...";
+            tipsArray[4] = "4개발 1아트 팀에서 나온 게임이에요...";
+            tipsArray[5] = "...";
+            tipsArray[6] = "...이거 읽기는 해요?";
+            tipsArray[7] = "크기의 비율을 중시해서 물건 크기가 다 일정해요...";
+            tipsArray[8] = "공격은 나중에 해봅시다...";
+        }
+        #endregion
+        #region 버튼 위치 저장 / 미리 정해진 위치로 이동 / 버튼 활성화
+        {
+            levelTargetPos = levelSelect.gameObject.transform.position;
+            achieveTargetPos = achievements.gameObject.transform.position;
+            disconTargetPos = quitConnection.gameObject.transform.position;
+
+            levelSelect.gameObject.transform.position = levelPos.transform.position;
+            achievements.gameObject.transform.position = achievePos.transform.position;
+            quitConnection.gameObject.transform.position = disconPos.transform.position;
+
+            levelSelect.gameObject.SetActive(true);
+            achievements.gameObject.SetActive(true);
+            quitConnection.gameObject.SetActive(true);
+        }
+        #endregion
     }
-    #endregion
+
 
     // 벡키용 Update
     private void Update()
@@ -101,7 +133,7 @@ public class MainButtonManager : MonoBehaviour
         loadingText.gameObject.SetActive(false);
         tips.gameObject.SetActive(false);
         isAtConnectMenu = true;
-        isConnecting    = false;
+        
 
         LoadNDServer();
     }
@@ -109,17 +141,21 @@ public class MainButtonManager : MonoBehaviour
     #region 메인 화면
     private void LoadNDServer() // 서버가 들어갔지만 전혀 서버와 관련 없는 함수
     {
-        levelSelect.gameObject.SetActive(true);
-        achievements.gameObject.SetActive(true);
-        quitConnection.gameObject.SetActive(true);
+        levelSelect.gameObject.transform.position = levelPos.transform.position;
+        achievements.gameObject.transform.position = achievePos.transform.position;
+        quitConnection.gameObject.transform.position = disconPos.transform.position;
+
+        levelSelect.transform.DOMove(levelTargetPos, movingTime).SetEase(Ease.OutCubic);
+        achievements.transform.DOMove(achieveTargetPos, movingTime + 0.1f).SetEase(Ease.OutCubic);
+        quitConnection.transform.DOMove(disconTargetPos, movingTime + 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
     public void QuitNDServer()
     {
         isConnecting = true;
 
-        levelSelect.gameObject.SetActive(false);
-        achievements.gameObject.SetActive(false);
-        quitConnection.gameObject.SetActive(false);
+        levelSelect.transform.DOMove(levelPosOut.transform.position, movingTime).SetEase(Ease.OutCubic);
+        achievements.transform.DOMove(achievePosOut.transform.position, movingTime + 0.1f).SetEase(Ease.OutCubic);
+        quitConnection.transform.DOMove(disconPosOut.transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
 
         disconnectingText.gameObject.SetActive(true);
         RandomlyPickTip();

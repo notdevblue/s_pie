@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 5d42e1b934d51f54790fc29a953350c3
+guid: ecd370dbb923bfa4c933bb0e56148fc4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5867025310058982678
-    second: AI_0
+      213: 8540248947151191389
+    second: desk2_0
   - first:
-      213: -1985119340831843599
-    second: AI_1
-  - first:
-      213: -4218984084308515245
-    second: AI_2
-  - first:
-      213: -1140885377070496368
-    second: AI_3
+      213: -7390997663102465955
+    second: desk2_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,85 +105,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AI_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61daa464f6cdb6150800000000000000
-      internalID: 5867025310058982678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fad5f42a707374e0800000000000000
-      internalID: -1985119340831843599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_2
+      name: desk2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 256
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 356a3c514582375c0800000000000000
-      internalID: -4218984084308515245
+      spriteID: d5db9545b2f058670800000000000000
+      internalID: 8540248947151191389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AI_3
+      name: desk2_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 256
         y: 0
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 256
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09586425bc2ca20f0800000000000000
-      internalID: -1140885377070496368
+      spriteID: d58090bd8c6ed6990800000000000000
+      internalID: -7390997663102465955
       vertices: []
       indices: 
       edges: []

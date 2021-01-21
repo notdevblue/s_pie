@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 5d42e1b934d51f54790fc29a953350c3
+guid: 389aff74021b1824499dd334193fadde
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5867025310058982678
-    second: AI_0
+      213: 2682944848953164398
+    second: Box
   - first:
-      213: -1985119340831843599
-    second: AI_1
-  - first:
-      213: -4218984084308515245
-    second: AI_2
-  - first:
-      213: -1140885377070496368
-    second: AI_3
+      213: -1143387049632691533
+    second: Whabun
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -73,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -85,7 +79,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,7 +91,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -111,85 +105,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AI_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61daa464f6cdb6150800000000000000
-      internalID: 5867025310058982678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fad5f42a707374e0800000000000000
-      internalID: -1985119340831843599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_2
+      name: Box
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
+        width: 256
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 356a3c514582375c0800000000000000
-      internalID: -4218984084308515245
+      spriteID: e6241d1102cbb3520800000000000000
+      internalID: 2682944848953164398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AI_3
+      name: Whabun
       rect:
         serializedVersion: 2
-        x: 512
+        x: 256
         y: 0
-        width: 512
+        width: 256
         height: 512
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09586425bc2ca20f0800000000000000
-      internalID: -1140885377070496368
+      spriteID: 3ba8cd9498fd120f0800000000000000
+      internalID: -1143387049632691533
       vertices: []
       indices: 
       edges: []

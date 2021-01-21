@@ -50,11 +50,11 @@ public class SpriteAI : MonoBehaviour
     }
     public void AIOneStack()
     {
-        cAnim.Play("AIOneStack");
+        cAnim.Play("AIOneStack 1");
     }
     public void AITwoStack()
     {
-        cAnim.Play("AITwoStack");
+        cAnim.Play("AITwoStack 1");
     }
     public void AIFullStack()
     {

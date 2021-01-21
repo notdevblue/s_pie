@@ -16,7 +16,8 @@ public class interactionScript : MonoBehaviour
 		Thur,
 		Cat_01,
 		Cat_02,
-		EmptyBox
+		EmptyBox,
+		Clicker
 	}
 
 	public CurInterationName curInterationName;

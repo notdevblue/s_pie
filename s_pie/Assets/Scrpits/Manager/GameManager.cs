@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ChallengeSaveData challengeSaveData;
 
+    private string previousScene = "";
+
     public static GameManager Instance
     {
         get

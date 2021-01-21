@@ -8,6 +8,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Inventory theInventory;  // Inventory.cs
+
+    [SerializeField]
+    private GameObject clickerMinigame = null;
+  
     public static UIManager UM;
     void Awake() => UM = this;
 
@@ -70,6 +74,10 @@ public class UIManager : MonoBehaviour
             //이 상자는 비어있다.
         }
 
+        else if(curBtn == "Clicker")
+        {
+            Instantiate(clickerMinigame);
+        }
         
 
     }

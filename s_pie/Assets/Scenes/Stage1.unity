@@ -17213,6 +17213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theInventory: {fileID: 936342005}
+  clickerMinigame: {fileID: 4121348708373759537, guid: b2e15ebcc5815a945ada13a1ffb7bef7,
+    type: 3}
   curBtn: 
   interactionBtn: {fileID: 1777423214}
 --- !u!4 &2145418094

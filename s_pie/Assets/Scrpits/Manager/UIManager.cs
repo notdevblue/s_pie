@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     void Awake() => UM = this;
 
     //변수 선언
-    public string curBtn; // awl = 송곳, Thur = 츄르, Cat_01 = 고양이1, Cat_02 = 고양이2, EmptyBox = 빈상자, 6 = 
+    public string curBtn; // awl = 송곳, Thur = 츄르, Cat_01 = 고양이1, Cat_02 = 고양이2, EmptyBox = 빈상자, Clicker = 클리커미니게임
     bool active;
     Item item;
     public Button interactionBtn;
@@ -69,16 +69,34 @@ public class UIManager : MonoBehaviour
             //냐옹 냐옹
         }
 
+        //빈 박스
         else if (curBtn == "EmptyBox")
         {
             //이 상자는 비어있다.
         }
 
+        // 클리커 미니게임
         else if(curBtn == "Clicker")
         {
             Instantiate(clickerMinigame);
         }
-        
+
+        //1층계단 ( 올라감)
+        else if (curBtn == "FloorStairs_01")
+        {
+            //텔레포트 코드 써주세요
+        }
+        //2층계단 (내려가기)
+        else if (curBtn == "FloorStairs_02")
+        {
+            // 이거도 마찬가지
+        }
+        // 창문 탈출?
+        else if (curBtn == "Window")
+        {
+            // 탈출하는코드 써주세요
+        }
+
 
     }
 

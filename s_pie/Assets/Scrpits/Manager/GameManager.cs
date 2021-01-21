@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private string previousScene = "";
 
+    public bool isPhotoDone = false;
+
     public static GameManager Instance
     {
         get

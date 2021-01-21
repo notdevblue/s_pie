@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraLensScript : MonoBehaviour
 {
     private Animator anim = null;
     private ClickerManager clickerManager = null;
+
+
 
     private int cameraHp = 10;
     private int firstCameraHp = 0;

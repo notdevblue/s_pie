@@ -20,7 +20,8 @@ public class interactionScript : MonoBehaviour
 		Clicker,
 		FloorStairs_01,
 		FloorStairs_02,
-		Window
+		Window,
+		Photo
 	}
 
 	public CurInterationName curInterationName;

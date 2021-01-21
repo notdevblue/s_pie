@@ -57,7 +57,11 @@ public class MoveAI : MonoBehaviour
 
         // 뭐 빠트리고 실행시키면 귀찮으니
         if (!CheckDestinationStatus())
+        { 
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
     }
 
     //코드 추가한것

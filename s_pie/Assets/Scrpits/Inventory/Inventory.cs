@@ -26,7 +26,6 @@ public class Inventory : MonoBehaviour
                 slots[i].ClearSlot();
                 return true;
             }
-            else return false;
         }
         return false;
     }

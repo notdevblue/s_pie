@@ -25,20 +25,27 @@ public class UIManager : MonoBehaviour
         interactionBtn.GetComponent<Button>().interactable = active;
     }
 
+    public void SetInteractionBtn(string index, bool _active)
+    {
+        curBtn = index;
+        active = _active;
+        interactionBtn.GetComponent<Button>().interactable = active;
+    }
+
     public void ClickInteractionBtn()
     {
         // 송곳
         if (curBtn == "Awl")
         {
             theInventory.AcquireItem(item);
-            Debug.Log("송곳먹음");
+            GameObject.Find("Awl").SetActive(false);
         }
 
         // 츄르
         else if (curBtn == "Thur")
         {
             theInventory.AcquireItem(item);
-            //TODO:상호작용2
+            GameObject.Find("Thur").SetActive(false);
         }
 
         // 고양이1
@@ -47,21 +54,23 @@ public class UIManager : MonoBehaviour
             if (theInventory.UseItem("Thur"))
             {
                 theInventory.AcquireItem(item);
+                GameObject.Find("Cat_01").SetActive(false);
             }
-         
-            //TODO:상호작용2
+        
         }
 
         // 고양이2
         else if (curBtn == "Cat_02")
         {
-            //TODO:상호작용2
+            //냐옹 냐옹
         }
 
         else if (curBtn == "EmptyBox")
         {
-            //TODO:상호작용2
+            //이 상자는 비어있다.
         }
+
+        
 
     }
 

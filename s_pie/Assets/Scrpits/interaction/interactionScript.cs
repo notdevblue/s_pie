@@ -32,7 +32,10 @@ public class interactionScript : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{ 
 			//Line.SetActive(true);
-			UM.SetInteractionBtn(curInterationName.ToString(), true, item);
+			if(item != null)
+				UM.SetInteractionBtn(curInterationName.ToString(), true, item);
+			else
+				UM.SetInteractionBtn(curInterationName.ToString(), true);
 		}
 	}
 	void OnTriggerExit2D(Collider2D col)

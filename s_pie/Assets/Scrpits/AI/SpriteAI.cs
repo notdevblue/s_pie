@@ -23,7 +23,7 @@ public class SpriteAI : MonoBehaviour
             UnityEditor.EditorUtility.DisplayDialog("뭔가가 잘못됬어요...", "에니메이터를 찾을 수 없습니다.", "확인");
             UnityEditor.EditorApplication.isPlaying = false;
         }
-        if (anim == null)
+        if (cAnim == null)
         {
             UnityEditor.EditorUtility.DisplayDialog("뭔가가 잘못됬어요...", "스탑워치에서 에니메이터를 찾을 수 없습니다.", "확인");
             UnityEditor.EditorApplication.isPlaying = false;

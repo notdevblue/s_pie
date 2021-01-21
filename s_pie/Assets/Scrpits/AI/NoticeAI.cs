@@ -25,6 +25,7 @@ public class NoticeAI : MonoBehaviour
 
     void Awake()
     {
+        anim = FindObjectOfType<SpriteAI>();
         #region 에디터용 코드
 #if UNITY_EDITOR
         if (player == null)

@@ -53,8 +53,10 @@ public class MoveAI : MonoBehaviour
 
     void Awake()
     {
+        anim = FindObjectOfType<SpriteAI>();
+
         // 뭐 빠트리고 실행시키면 귀찮으니
-        if(!CheckDestinationStatus())
+        if (!CheckDestinationStatus())
             UnityEditor.EditorApplication.isPlaying = false;
     }
 

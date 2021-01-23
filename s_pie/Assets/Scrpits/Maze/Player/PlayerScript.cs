@@ -67,28 +67,28 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (shortestCrossroadScript.GetCrossroadIsLeft())
-                    currentPosition = Vector2.MoveTowards(transform.localPosition, shortestCrossroadScript.GetLeftCrossroadScript().GetCurretnPosition(), 1000f * Time.deltaTime);
+                    currentPosition = shortestCrossroadScript.GetRightCrossroadScript().GetCurretnPosition();
             }
 
         if (shortestCrossroadScript.GetCanMoveRight())
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (shortestCrossroadScript.GetCrossroadIsRight())
-                    currentPosition = Vector2.MoveTowards(transform.localPosition, shortestCrossroadScript.GetRightCrossroadScript().GetCurretnPosition(), 1000f * Time.deltaTime);
+                    currentPosition = shortestCrossroadScript.GetRightCrossroadScript().GetCurretnPosition();
             }
 
         if (shortestCrossroadScript.GetCanMoveUp())
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (shortestCrossroadScript.GetCrossroadIsUp())
-                    currentPosition = Vector2.MoveTowards(transform.localPosition, shortestCrossroadScript.GetUpCrossroadScript().GetCurretnPosition(), 1000f * Time.deltaTime);
+                    currentPosition = shortestCrossroadScript.GetUpCrossroadScript().GetCurretnPosition();
             }
 
         if (shortestCrossroadScript.GetCanMoveDown())
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (shortestCrossroadScript.GetCrossroadIsDown())
-                    currentPosition = Vector2.MoveTowards(transform.localPosition, shortestCrossroadScript.GetDownCrossroadScript().GetCurretnPosition(), 1000f * Time.deltaTime);
+                    currentPosition = shortestCrossroadScript.GetDownCrossroadScript().GetCurretnPosition();
             }
     }
     void SetScripts()

@@ -7,7 +7,7 @@ public class ClickerManager : MonoBehaviour
     private int break1 = 6; // 살짝 금감
     private int break2 = 3; // 많이 금감
 
-    private float clickTime = 3.5f;
+    private float clickTime = 300.5f;
 
     [SerializeField]
     private bool gameIsOver = false;

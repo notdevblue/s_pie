@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class clickerScript : MonoBehaviour
 {
+    [SerializeField]
+    private Canvas mainCanvas = null;
     private ClickerManager clickerManager = null;
     private void Start()
     {
+        mainCanvas = FindObjectOfType<Canvas>();
         clickerManager = FindObjectOfType<ClickerManager>();
+        transform.SetParent(mainCanvas.transform);
     }
     private void Update()
     {

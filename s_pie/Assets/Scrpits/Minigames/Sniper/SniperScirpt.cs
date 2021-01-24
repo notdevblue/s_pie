@@ -24,4 +24,8 @@ public class SniperScirpt : MonoBehaviour
         currentPosition = targetPosition;
         transform.localPosition = currentPosition;
     }
+    public Vector2 GetCurrentPosition()
+    {
+        return currentPosition;
+    }
 }

@@ -52,6 +52,11 @@ public class ShutDownManager : MonoBehaviour
     private GameObject button3 = null;
 
     [SerializeField]
+    private AudioClip warning = null;
+    [SerializeField]
+    private AudioSource audi = null;
+
+    [SerializeField]
     private Canvas canvas = null;
 
 
@@ -59,6 +64,8 @@ public class ShutDownManager : MonoBehaviour
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
+        audi = GetComponent<AudioSource>();
+
         button1Time = Random.Range(button1Min, button1Max);
         button2Time = Random.Range(button2Min, button2Max);
         button3Time = Random.Range(button3Min, button3Max);
@@ -81,16 +88,22 @@ public class ShutDownManager : MonoBehaviour
     private IEnumerator SpawnButton1()
     {
         yield return new WaitForSeconds(button1Time);
+        audi.clip = warning;
+        audi.Play();
         Instantiate(button1);
     }
     private IEnumerator SpawnButton2()
     {
         yield return new WaitForSeconds(button2Time);
+        audi.clip = warning;
+        audi.Play();
         Instantiate(button2);
     }
     private IEnumerator SpawnButton3()
     {
         yield return new WaitForSeconds(button3Time);
+        audi.clip = warning;
+        audi.Play();
         Instantiate(button3);
     }
     private void ClearCheck()

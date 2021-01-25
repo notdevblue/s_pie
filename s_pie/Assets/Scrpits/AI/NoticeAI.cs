@@ -95,7 +95,7 @@ public class NoticeAI : MonoBehaviour
 
     void NoticePlayer()
     {
-        if(notice == 3)
+        if(notice == 2)
         {
             isAINoticedPlayer = true;
             notice = 0;

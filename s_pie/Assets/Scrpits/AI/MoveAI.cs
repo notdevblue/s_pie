@@ -97,13 +97,13 @@ public class MoveAI : MonoBehaviour
                     case true:
                         anim.AIDown(); // 점점 꼬여가는 코드
                         transform.DOMoveY(transform.position.y + 1, moveDelay);
-                        return;
+                        break;
                     case false:
                         anim.AIUp();   // 이것이 밤 코딩
                         transform.DOMoveY(transform.position.y - 1, moveDelay);
-                        return;
+                        break;
                 }
-                break; // 이거 안해주면 에러가 나는 신기한 C#
+                return; // 이거 안해주면 에러가 나는 신기한 C#
         }
 
         switch (isYSame)
@@ -113,12 +113,12 @@ public class MoveAI : MonoBehaviour
                 {
                     case true:
                         transform.DOMoveX(transform.position.x + 1, moveDelay);
-                        return;
+                        break;
                     case false:
                         transform.DOMoveX(transform.position.x - 1, moveDelay);
-                        return;
+                        break;
                 }
-                break; // 이거 안해주면 에러가 나는 신기한 C#
+                return; // 이거 안해주면 에러가 나는 신기한 C#
         }
 
         #endregion

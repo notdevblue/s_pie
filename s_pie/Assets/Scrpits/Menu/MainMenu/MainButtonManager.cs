@@ -199,6 +199,10 @@ public class MainButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage1Load");
     }
+    public void EnterStage2()
+    {
+        SceneManager.LoadScene("Stage2Load");
+    }
 
     private void MoveComplete()
     {

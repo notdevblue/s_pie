@@ -50,6 +50,10 @@ public class Sniper_EnemyScript : MonoBehaviour
                 sniperManager.SetShooAble(a);
             }
         }
+        else if(sniperManager.GetShootAble() == 0)
+        {
+            sniperManager.SetGameOver(!isSleep);
+        }
     }
     void GetDamageDistance()
     {

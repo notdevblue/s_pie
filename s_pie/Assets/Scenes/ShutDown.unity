@@ -294,8 +294,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2034444303}
-  - component: {fileID: 2034444302}
   - component: {fileID: 2034444304}
+  - component: {fileID: 2034444302}
   m_Layer: 0
   m_Name: ShutDownManager
   m_TagString: Untagged
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2034444301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d281f366ed88a94bb05cadc9d02ca42, type: 3}
+  m_Script: {fileID: 11500000, guid: 911a8f7e9d9cb7645b198ae1416260dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button1Clicked: 0
@@ -351,7 +351,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

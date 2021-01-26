@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  curInterationName: 5
+  curInterationName: 4
 --- !u!1 &171207704
 GameObject:
   m_ObjectHideFlags: 0
@@ -38543,6 +38543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_InventoryBase: {fileID: 1766944610}
   go_SlotsParent: {fileID: 439975959}
+  slots: []
 --- !u!1 &939643637
 GameObject:
   m_ObjectHideFlags: 0

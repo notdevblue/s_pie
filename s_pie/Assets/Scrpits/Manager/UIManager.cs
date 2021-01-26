@@ -111,6 +111,11 @@ public class UIManager : MonoBehaviour
                     GameManager.Instance.isPhotoDone = true;
                 }
                 return;
+
+            case "Door_01":
+                return;
+
+
         }
 
         #region 승핵이의 만행

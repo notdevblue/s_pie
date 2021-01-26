@@ -21,7 +21,8 @@ public class interactionScript : MonoBehaviour
 		FloorStairs_01,
 		FloorStairs_02,
 		Window,
-		Photo
+		Photo,
+		Door_01
 	}
 
 	public CurInterationName curInterationName;

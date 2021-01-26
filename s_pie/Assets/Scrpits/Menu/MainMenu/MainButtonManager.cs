@@ -6,6 +6,7 @@ using DG.Tweening;
 // 좀 아름다운 길이의 클래스
 // 사실 한번 짜고 안 건들일 예정이라서 클래스 나누기 귀찬았
 // 죄송합니디아.....
+// 한승쌤한테 결국 혼남
 public class MainButtonManager : MonoBehaviour
 {
     #region Connect 하면 비활성화 되는 버튼들
@@ -18,6 +19,7 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private Button levelSelect;
     [SerializeField] private Button achievements;
     [SerializeField] private Button quitConnection;
+    [SerializeField] private Button settings;
     #endregion
     #region Connect, Disconnect 하는 중일 때 활성화되는 UI들
     [Header("Connect 하는 중일 때 활성화되는 UI들")]
@@ -32,6 +34,7 @@ public class MainButtonManager : MonoBehaviour
     private bool     isAtConnectMenu = false;
     private bool     isAtLevelSelect = false;
     private bool     isAtAchievement = false;
+    private bool     isAtSettings    = false;
     private string[] tipsArray;
 
     [Header("로딩 시간")]
@@ -44,22 +47,28 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private GameObject levelCameraPoint;
     [Header("업적 상태 위치")]
     [SerializeField] private GameObject achievementPoint;
+    [Header("설정 메뉴 위치")]
+    [SerializeField] private GameObject settingsPoint;
     private readonly Vector3            MAIN_CAMERA_POINT = new Vector3(0.0f, 0.0f, -10.0f);
     #endregion
+
     #region 버튼 이동 위한 변수들
     [Header("임무 선택 버튼 기본 / 아웃 위치")]
     [SerializeField] private GameObject levelPos;
     [SerializeField] private GameObject levelPosOut;
-    private Vector3 levelTargetPos;
+                     private Vector3    levelTargetPos;
     [Header("업적 버튼 기본 / 아웃 위치")]
     [SerializeField] private GameObject achievePos;
     [SerializeField] private GameObject achievePosOut;
-    private Vector3 achieveTargetPos;
+                     private Vector3    achieveTargetPos;
     [Header("게임 종료 버튼 기본 / 아웃 위치")]
     [SerializeField] private GameObject disconPos;
     [SerializeField] private GameObject disconPosOut;
-    private Vector3 disconTargetPos;
-
+                     private Vector3    disconTargetPos;
+    [Header("설정 버튼 기본 / 아웃 위치")]
+    [SerializeField] private GameObject setPos;
+    [SerializeField] private GameObject setPosOut;
+                     private Vector3    setTargetPos;
     #endregion
     #endregion
     
@@ -81,17 +90,18 @@ public class MainButtonManager : MonoBehaviour
         #endregion
         #region 버튼 위치 저장 / 미리 정해진 위치로 이동 / 버튼 활성화
         {
-            levelTargetPos = levelSelect.gameObject.transform.position;
-            achieveTargetPos = achievements.gameObject.transform.position;
-            disconTargetPos = quitConnection.gameObject.transform.position;
-
-            levelSelect.gameObject.transform.position = levelPos.transform.position;
-            achievements.gameObject.transform.position = achievePos.transform.position;
-            quitConnection.gameObject.transform.position = disconPos.transform.position;
-
-            levelSelect.gameObject.SetActive(true);
-            achievements.gameObject.SetActive(true);
+            levelTargetPos                    = levelSelect.   transform.position;
+            achieveTargetPos                  = achievements.  transform.position;
+            disconTargetPos                   = quitConnection.transform.position;
+            setTargetPos                      = settings.      transform.position;
+            levelSelect.   transform.position = levelPos.      transform.position;
+            achievements.  transform.position = achievePos.    transform.position;
+            quitConnection.transform.position = disconPos.     transform.position;
+            settings.      transform.position = setPos.        transform.position;
+            levelSelect.   gameObject.SetActive(true);
+            achievements.  gameObject.SetActive(true);
             quitConnection.gameObject.SetActive(true);
+            settings.      gameObject.SetActive(true);
         }
         #endregion
     }
@@ -116,7 +126,7 @@ public class MainButtonManager : MonoBehaviour
     /// </summary>
     public void BeginConnect()
     {
-        quitButton.gameObject.SetActive(false);
+        quitButton.   gameObject.SetActive(false);
         connectButton.gameObject.SetActive(false);
         ConnectingToND();
     }
@@ -141,21 +151,23 @@ public class MainButtonManager : MonoBehaviour
     #region 메인 화면
     private void LoadNDServer() // 서버가 들어갔지만 전혀 서버와 관련 없는 함수
     {
-        levelSelect.gameObject.transform.position = levelPos.transform.position;
-        achievements.gameObject.transform.position = achievePos.transform.position;
-        quitConnection.gameObject.transform.position = disconPos.transform.position;
+        levelSelect.   transform.position = levelPos.  transform.position;
+        achievements.  transform.position = achievePos.transform.position;
+        quitConnection.transform.position = disconPos. transform.position;
 
-        levelSelect.transform.DOMove(levelTargetPos, movingTime).SetEase(Ease.OutCubic);
-        achievements.transform.DOMove(achieveTargetPos, movingTime + 0.1f).SetEase(Ease.OutCubic);
-        quitConnection.transform.DOMove(disconTargetPos, movingTime + 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
+        levelSelect.   transform.DOMove(levelTargetPos,   movingTime).       SetEase(Ease.OutCubic);
+        achievements.  transform.DOMove(achieveTargetPos, movingTime + 0.1f).SetEase(Ease.OutCubic);
+        settings.      transform.DOMove(setTargetPos,     movingTime + 0.2f).SetEase(Ease.OutCubic);
+        quitConnection.transform.DOMove(disconTargetPos,  movingTime + 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
     public void QuitNDServer()
     {
         isConnecting = true;
 
-        levelSelect.transform.DOMove(levelPosOut.transform.position, movingTime).SetEase(Ease.OutCubic);
-        achievements.transform.DOMove(achievePosOut.transform.position, movingTime + 0.1f).SetEase(Ease.OutCubic);
-        quitConnection.transform.DOMove(disconPosOut.transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
+        levelSelect.   transform.DOMove(levelPosOut.  transform.position, movingTime).       SetEase(Ease.OutCubic);
+        achievements.  transform.DOMove(achievePosOut.transform.position, movingTime + 0.1f).SetEase(Ease.OutCubic);
+        quitConnection.transform.DOMove(disconPosOut. transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
+        settings.      transform.DOMove(setPosOut.    transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
 
         disconnectingText.gameObject.SetActive(true);
         RandomlyPickTip();
@@ -172,6 +184,8 @@ public class MainButtonManager : MonoBehaviour
     }
     #endregion
     #region 본격적인 정보창
+
+    #region 임무, 업적, 설정
     public void GotoLevelSelect()
     {
         isConnecting    = true;
@@ -186,6 +200,15 @@ public class MainButtonManager : MonoBehaviour
         isAtConnectMenu = false;
         Camera.main.transform.DOMove(achievementPoint.transform.position, movingTime).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
+    public void GotoSettings()
+    {
+        isConnecting    = true;
+        isAtSettings    = true;
+        isAtConnectMenu = false;
+        Camera.main.transform.DOMove(settingsPoint.transform.position, movingTime).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
+    }
+    #endregion
+
     private void ReturnPosToMainMenu()
     {
         isConnecting    = true;
@@ -252,7 +275,7 @@ public class MainButtonManager : MonoBehaviour
                 QuitNDServer();
                 return;
             case false:
-                if (isAtAchievement || isAtLevelSelect)
+                if (isAtAchievement || isAtLevelSelect || isAtSettings)
                 {
                     ReturnPosToMainMenu();
                     return;

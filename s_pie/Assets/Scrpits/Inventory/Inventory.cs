@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     private GameObject go_InventoryBase; // Inventory_Base 이미지
     [SerializeField]
     private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 
-
+    [SerializeField]
     private Slot[] slots;  // 슬롯들 배열
 
     void Start()
@@ -21,10 +21,13 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item.itemName == _item)
+            if (slots[i].item != null) // slots[i].item == null일경우 에러 발생.
             {
-                slots[i].ClearSlot();
-                return true;
+                if (slots[i].item.itemName == _item)
+                {
+                    slots[i].ClearSlot();
+                    return true;
+                }
             }
         }
         return false;

@@ -99,7 +99,13 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "Photo":
-                if(theInventory.UseItem("Cat_01") || theInventory.UseItem("Awl"))
+                #region 에러가 난 이유(추측)
+                // 고양이를 먹었을 경우에는 theInventory.UseItem("Cat_01")가 실행 된 후 theInventory.UseItem("Awl")에서 에러가
+                // 발생하므로 문제없이 작동이 됨. 그러나 송곳을 먹은 경우 theInventory.UseItem("Cat_01")에서 에러가 발생하여
+                // theInventory.UseItem("Awl")가 실행되지 않음. 
+                // 그래서 theInventory.UseItem()에서 null 에러가 생기는 것을 방지함.
+                #endregion
+                if (theInventory.UseItem("Cat_01") || theInventory.UseItem("Awl"))  
                 {
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
                     GameManager.Instance.isPhotoDone = true;

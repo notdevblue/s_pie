@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ChallengeSaveData challengeSaveData;
 
-    private string previousScene = "";
-
-    public bool isPhotoDone = false;
+    private bool isPhotoDone = false;
 
     public static GameManager Instance
     {
@@ -48,6 +46,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
 
+    }
+    public bool GetIsPhotoDone()
+    {
+        return isPhotoDone;
+    }
+    public void SetIsPhotoDone(bool a)
+    {
+        isPhotoDone = a;
     }
     public ChallengeSaveData GetChallengeSaveData()
     {

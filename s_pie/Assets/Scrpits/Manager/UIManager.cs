@@ -22,11 +22,13 @@ public class UIManager : MonoBehaviour
     public static UIManager UM;
 
     private ChallengeManager challengeManager = null;
+    private GameManager gameManager = null;
 
     void Awake() => UM = this;
     private void Start()
     {
         challengeManager = ChallengeManager.Instance;
+        gameManager = GameManager.Instance;
     }
 
     //변수 선언
@@ -81,8 +83,11 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "Clicker":
-                Instantiate(clickerMinigame);
-                GameObject.Find("Box_Clicker").transform.GetChild(0).gameObject.SetActive(true);
+                if (FindObjectOfType<ClickerManager>() == null) // 임시 나중에 코드정리해둘것
+                {
+                    Instantiate(clickerMinigame);
+                    GameObject.Find("Box_Clicker").transform.GetChild(0).gameObject.SetActive(true);
+                }
                 return;
 
             case "FloorStairs_01":
@@ -98,9 +103,9 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "Window":
-                if (GameManager.Instance.isPhotoDone)
+                if (gameManager.GetIsPhotoDone())
                 {
-                    GameManager.Instance.isPhotoDone = false;
+                    gameManager.SetIsPhotoDone(false);
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MainLoad");
                 }
                 return;
@@ -116,12 +121,12 @@ public class UIManager : MonoBehaviour
                 {
                     challengeManager.SetChallenge1(true); // 고양이로 클리어시 업적 잠금해제
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
-                    GameManager.Instance.isPhotoDone = true;
+                    gameManager.SetIsPhotoDone(true);
                 }
                 if(theInventory.UseItem("Awl"))
                 {
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
-                    GameManager.Instance.isPhotoDone = true;
+                    gameManager.SetIsPhotoDone(true);
                 }
                 return;
 

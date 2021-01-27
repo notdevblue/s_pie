@@ -14,12 +14,18 @@ public class QuestManager : MonoBehaviour
     private Slot[] slots;
     [SerializeField] private Item[] sharpItem;
 
+    private GameManager gameManager = null;
+
     private void Awake()
     {
         slots = FindObjectsOfType<Slot>();
         ShowQuest();
     }
-    
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     public void QuestCheck()
     {
         ClearCheck();
@@ -59,7 +65,7 @@ public class QuestManager : MonoBehaviour
                 }
                 break;
             case 2:
-                if(GameManager.Instance.isPhotoDone == true)
+                if(gameManager.GetIsPhotoDone())
                 {
                     questClear = true;
                 }

@@ -20,7 +20,14 @@ public class UIManager : MonoBehaviour
     private GameObject player = null;
 
     public static UIManager UM;
+
+    private ChallengeManager challengeManager = null;
+
     void Awake() => UM = this;
+    private void Start()
+    {
+        challengeManager = ChallengeManager.Instance;
+    }
 
     //변수 선언
     public string curBtn; // awl = 송곳, Thur = 츄르, Cat_01 = 고양이1, Cat_02 = 고양이2, EmptyBox = 빈상자, Clicker = 클리커미니게임
@@ -105,7 +112,13 @@ public class UIManager : MonoBehaviour
                 // theInventory.UseItem("Awl")가 실행되지 않음. 
                 // 그래서 theInventory.UseItem()에서 null 에러가 생기는 것을 방지함.
                 #endregion
-                if (theInventory.UseItem("Cat_01") || theInventory.UseItem("Awl"))  
+                if (theInventory.UseItem("Cat_01"))  
+                {
+                    challengeManager.SetChallenge1(true); // 고양이로 클리어시 업적 잠금해제
+                    GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
+                    GameManager.Instance.isPhotoDone = true;
+                }
+                if(theInventory.UseItem("Awl"))
                 {
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
                     GameManager.Instance.isPhotoDone = true;

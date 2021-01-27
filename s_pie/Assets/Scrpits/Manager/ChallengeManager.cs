@@ -7,6 +7,10 @@ using System;
 public class ChallengeSaveData
 {
     public bool[] challengeClear = new bool[2]; // 업적의 총 갯수 == index값
+    #region 업적 목록
+    // challengeClear[0] => 채고의! 체신장비!
+    // challengeClear[1] => 테스트용
+    #endregion
     public int testNum = 0; // 저장, 로드 기능 테스트용. 삭제해도 됌.
 }
 public class ChallengeManager : MonoBehaviour

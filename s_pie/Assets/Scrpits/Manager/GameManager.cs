@@ -64,11 +64,18 @@ public class GameManager : MonoBehaviour
     }
     public void ChallengeLoad()
     {
-        FileStream fs = new FileStream(filePath, FileMode.Open);
-        byte[] data = new byte[fs.Length];
-        fs.Read(data, 0, data.Length);
-        fs.Close();
-        jsonString = Encoding.UTF8.GetString(data);
-        challengeSaveData = JsonUtility.FromJson<ChallengeSaveData>(jsonString);
+        try
+        {
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            byte[] data = new byte[fs.Length];
+            fs.Read(data, 0, data.Length);
+            fs.Close();
+            jsonString = Encoding.UTF8.GetString(data);
+            challengeSaveData = JsonUtility.FromJson<ChallengeSaveData>(jsonString);
+        }
+        catch(FileNotFoundException)
+        {
+            ChallengeSave();
+        }
     }
 }

@@ -13,7 +13,6 @@ public class PlayerMove : MonoBehaviour
 
     private TurnManager turnManager = null; //플레이어 턴인지 아닌지 확인하기 위해서 만듬
 
-    private BoxCollider2D boxCollider; //지나갈 수 없는 곳과 충돌하는지 확인
     [SerializeField] private LayerMask layerMask; //지나갈 수 없는 곳의 레이어 설정
 
     private Animator animator = null; //애니메이션 사용
@@ -36,8 +35,6 @@ public class PlayerMove : MonoBehaviour
         NullCheck();
 #endif
         #endregion
-
-        boxCollider = GetComponent<BoxCollider2D>();
 
         animator = GetComponent<Animator>();
 
@@ -152,9 +149,7 @@ public class PlayerMove : MonoBehaviour
                 break;
         }
 
-        boxCollider.enabled = false;
         hit = Physics2D.Linecast(start, end, layerMask);
-        boxCollider.enabled = true;
 
         if (hit.transform != null)
             return true;

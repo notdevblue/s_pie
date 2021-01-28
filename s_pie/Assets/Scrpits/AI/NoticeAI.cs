@@ -17,6 +17,7 @@ public class NoticeAI : MonoBehaviour
     private        float    minY              = 0.0f;
     private        int      notice            = 0;
     private        SpriteAI anim              = null;
+    private        GameManager gameManager    = null;
     private static bool     isFound           = false;
     private static bool     isAINoticedPlayer = false;
     public  static bool     getIsFound        { get { return isFound; } } // 으으흠.
@@ -39,6 +40,7 @@ public class NoticeAI : MonoBehaviour
 
     void Awake()
     {
+        gameManager = GameManager.Instance;
         anim = FindObjectOfType<SpriteAI>();
         #region 에디터용 코드
 #if UNITY_EDITOR
@@ -138,8 +140,9 @@ public class NoticeAI : MonoBehaviour
         {
             isAINoticedPlayer = true;
             notice = 0;
-            
-            //Debug.Log("AI 가 플레이어를 발견함");
+
+            gameManager.SetGameOver(true);
+            // Debug.Log("AI 가 플레이어를 발견함");
         }
     }
 

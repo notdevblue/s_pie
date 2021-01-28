@@ -2,13 +2,14 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using System;
 // 좀 아름다운 길이의 클래스
 // 사실 한번 짜고 안 건들일 예정이라서 클래스 나누기 귀찬았
 // 죄송합니디아.....
 // 한승쌤한테 결국 혼남
 public class MainButtonManager : MonoBehaviour
 {
+    private GameManager gameManager = null;
     #region Connect 하면 비활성화 되는 버튼들
     [Header("Connect 하면 비활성화되는 버튼들")]
     [SerializeField] private Button quitButton;
@@ -74,6 +75,7 @@ public class MainButtonManager : MonoBehaviour
     
     private void Awake()
     {
+        gameManager = GameManager.Instance;
         #region 로딩시 나오는 팁
         {
             tipsArray = new string[9];
@@ -106,7 +108,18 @@ public class MainButtonManager : MonoBehaviour
         #endregion
     }
 
-
+    private void Start()
+    {
+        if(gameManager.GetMainLoaded())
+        {
+            quitButton.gameObject.SetActive(false);
+            connectButton.gameObject.SetActive(false);
+            isConnecting = true;
+            loadingText.gameObject.SetActive(true);
+            tips.gameObject.SetActive(true);
+            Invoke(nameof(WaitComplete), 0f);
+        }
+    }
     // 벡키용 Update
     private void Update()
     {
@@ -132,11 +145,16 @@ public class MainButtonManager : MonoBehaviour
     }
     public void ConnectingToND() // 멋 위한 코드
     {
-        isConnecting = true;
-        loadingText.gameObject.SetActive(true);
-        RandomlyPickTip();
-        tips.gameObject.SetActive(true);
-        Invoke(nameof(WaitComplete), connectionTime);
+        if (!gameManager.GetMainLoaded())
+        {
+            isConnecting = true;
+            gameManager.SetMainLoaded(true);
+            loadingText.gameObject.SetActive(true);
+            RandomlyPickTip();
+            tips.gameObject.SetActive(true);
+            Invoke(nameof(WaitComplete), connectionTime);
+        }
+
     }
     private void WaitComplete()
     {
@@ -288,7 +306,7 @@ public class MainButtonManager : MonoBehaviour
     // 랜덤으로 tipsArray 에서 불러온 원소를 tips 에 넣음
     private void RandomlyPickTip()
     {
-        int tip = (int)Random.Range(0f, 8.5f);
+        int tip = (int)UnityEngine.Random.Range(0f, 8.5f);
         tips.text = tipsArray[tip];
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GameManager : MonoBehaviour
     private ChallengeSaveData challengeSaveData;
 
     private bool isPhotoDone = false;
+    private bool gameOver = false;
+
+    private bool mainLoaded = false;
+    private bool canGameDoneLoad = true;
 
     public static GameManager Instance
     {
@@ -34,10 +39,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
     private void Awake()
     {
+        gameObject.AddComponent<AudioSource>();
         challengeSaveData = new ChallengeSaveData();
         filePath = string.Concat(Application.persistentDataPath, "/", "Save.txt");
         ChallengeLoad();
@@ -45,7 +51,36 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-
+        if (gameOver || isPhotoDone)
+            GameDone();
+    }
+    public void GameDone()
+    {
+        if (canGameDoneLoad)
+        {
+            canGameDoneLoad = false;
+            SceneManager.LoadScene("GameDone");
+        }
+    }
+    public void SetCanGameDoneLoad(bool a)
+    {
+        canGameDoneLoad = a;
+    }
+    public bool GetMainLoaded()
+    {
+        return mainLoaded;
+    }
+    public void SetMainLoaded(bool a)
+    {
+        mainLoaded = a;
+    }
+    public void SetGameOver(bool a)
+    {
+        gameOver = a;
+    }
+    public bool GetGameOver()
+    {
+        return gameOver;
     }
     public bool GetIsPhotoDone()
     {

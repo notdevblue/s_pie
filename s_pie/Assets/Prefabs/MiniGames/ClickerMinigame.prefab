@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b6a57e75b36734f8e0dbe7657573cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameIsOver: 0
+  gameOverSound: {fileID: 8300000, guid: 7364a3a546af4774d822ea80fbea126d, type: 3}
   gameIsClear: 0
 --- !u!1 &7348670733996294356
 GameObject:

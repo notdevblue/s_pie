@@ -7,6 +7,7 @@ public class CameraLensScript : MonoBehaviour
 {
     private Animator anim = null;
     private ClickerManager clickerManager = null;
+    private GameManager gameManager = null;
 
 
 
@@ -16,6 +17,7 @@ public class CameraLensScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         clickerManager = FindObjectOfType<ClickerManager>();
         anim = GetComponent<Animator>();
 
@@ -29,7 +31,7 @@ public class CameraLensScript : MonoBehaviour
     }
     public void OnClick()
     {
-        if (!clickerManager.GetGameIsClear() && !clickerManager.GetGameIsOver())
+        if (!clickerManager.GetGameIsClear() && !gameManager.GetGameOver())
             cameraHp--;
         if (cameraHp <= 0)
             clickerManager.SetGameIsClear(true);

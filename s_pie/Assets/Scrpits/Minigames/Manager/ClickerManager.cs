@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClickerManager : MonoBehaviour
 { 
     private int break1 = 6; // 살짝 금감
     private int break2 = 3; // 많이 금감
 
-    private float clickTime = 300.5f;
+    private float clickTime = 3.5f;
+    private float gameOverSoundPlayTime = 1f;
 
     [SerializeField]
-    private bool gameIsOver = false;
+    private AudioClip gameOverSound = null;
+
+    private AudioSource audi = null;
+
+    private GameManager gameManager = null;
+
     // gameIsOver가 ture가 될시 게임오버 혹은 그전의 화면으로 돌아가고 패널티 부여
     [SerializeField]
     private bool gameIsClear = false;
@@ -18,15 +25,10 @@ public class ClickerManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
+        audi = gameObject.AddComponent<AudioSource>();
+        
         StartCoroutine(GameOverCheck());
-    }
-    public void SetGameIsOver(bool a)
-    {
-        gameIsOver = a;
-    }
-    public bool GetGameIsOver()
-    {
-        return gameIsOver;
     }
     public void SetGameIsClear(bool a)
     {
@@ -47,7 +49,10 @@ public class ClickerManager : MonoBehaviour
     IEnumerator GameOverCheck()
     {
         yield return new WaitForSeconds(clickTime);
-        gameIsOver = true;
+        audi.clip = gameOverSound;
+        audi.Play();
+        yield return new WaitForSeconds(gameOverSoundPlayTime);
+        gameManager.SetGameOver(true);
     }
 
 }

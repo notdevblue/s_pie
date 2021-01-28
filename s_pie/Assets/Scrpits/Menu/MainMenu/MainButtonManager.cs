@@ -15,12 +15,14 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private Button quitButton;
     [SerializeField] private Button connectButton;
     #endregion
-    #region Connect 하면 활성화되는 버튼들
+    #region Connect 하면 활성화되는 UI
     [Header("Connect 하면 활성화되는 버튼들")]
     [SerializeField] private Button levelSelect;
     [SerializeField] private Button achievements;
     [SerializeField] private Button quitConnection;
     [SerializeField] private Button settings;
+    [Header("메인 이미지 위치 저장용")]
+    [SerializeField] private Image  playerImage;
     #endregion
     #region Connect, Disconnect 하는 중일 때 활성화되는 UI들
     [Header("Connect 하는 중일 때 활성화되는 UI들")]
@@ -36,12 +38,18 @@ public class MainButtonManager : MonoBehaviour
     private bool     isAtLevelSelect = false;
     private bool     isAtAchievement = false;
     private bool     isAtSettings    = false;
+    private bool     isAtPicture     = false;
     private string[] tipsArray;
 
+    [Header("메인화면 렌덤 이미지 용 배열")]
+    [SerializeField] private Image[] images;
+
     [Header("로딩 시간")]
-    [SerializeField] private float connectionTime = 3.0f;
+    [SerializeField] private float  connectionTime = 3.0f;
     [Header("화면 전환 시간")]
-    [SerializeField] private float movingTime     = 1.5f;
+    [SerializeField] private float  movingTime     = 1.5f;
+    [Header("입력 막는 용도")]
+    [SerializeField] private Canvas blockInput = null;
 
     #region 카메라 이동 위한 변수들
     [Header("레벨 선택 위치")]
@@ -50,6 +58,8 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private GameObject achievementPoint;
     [Header("설정 메뉴 위치")]
     [SerializeField] private GameObject settingsPoint;
+    [Header("사진 위치")]
+    [SerializeField] private GameObject picturePos;
     private readonly Vector3            MAIN_CAMERA_POINT = new Vector3(0.0f, 0.0f, -10.0f);
     #endregion
 
@@ -70,6 +80,10 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField] private GameObject setPos;
     [SerializeField] private GameObject setPosOut;
                      private Vector3    setTargetPos;
+    [Header("플레이어 기본 / 아웃 위치")]
+    [SerializeField] private GameObject imagePos;
+    [SerializeField] private GameObject imagePosOut;
+                     private Vector3    imageTargetPos;
     #endregion
     #endregion
     
@@ -96,14 +110,17 @@ public class MainButtonManager : MonoBehaviour
             achieveTargetPos                  = achievements.  transform.position;
             disconTargetPos                   = quitConnection.transform.position;
             setTargetPos                      = settings.      transform.position;
+            imageTargetPos                    = playerImage.   transform.position;
             levelSelect.   transform.position = levelPos.      transform.position;
             achievements.  transform.position = achievePos.    transform.position;
             quitConnection.transform.position = disconPos.     transform.position;
             settings.      transform.position = setPos.        transform.position;
+            playerImage.   transform.position = imagePos.      transform.position;
             levelSelect.   gameObject.SetActive(true);
             achievements.  gameObject.SetActive(true);
             quitConnection.gameObject.SetActive(true);
             settings.      gameObject.SetActive(true);
+            playerImage.   gameObject.SetActive(true);
         }
         #endregion
     }
@@ -120,12 +137,19 @@ public class MainButtonManager : MonoBehaviour
             Invoke(nameof(WaitComplete), 0f);
         }
     }
-    // 벡키용 Update
+    // 벡키용 Update 였던 것
     private void Update()
     {
-        switch (isConnecting) // 가짜 로딩 중에는 꺼지면 안된다
+        switch (isConnecting) // 움직이는 중에 꺼지면 안된다
         {
+            case true:
+                if (!isAtConnectMenu)
+                    blockInput.gameObject.SetActive(true);
+                else
+                    blockInput.gameObject.SetActive(false);
+                break;
             case false:
+                blockInput.gameObject.SetActive(false);
                 OnEscape();
                 break;
         }
@@ -154,7 +178,10 @@ public class MainButtonManager : MonoBehaviour
             tips.gameObject.SetActive(true);
             Invoke(nameof(WaitComplete), connectionTime);
         }
-
+        else
+        {
+            WaitComplete();
+        }
     }
     private void WaitComplete()
     {
@@ -169,6 +196,10 @@ public class MainButtonManager : MonoBehaviour
     #region 메인 화면
     private void LoadNDServer() // 서버가 들어갔지만 전혀 서버와 관련 없는 함수
     {
+        isConnecting = true;
+
+        RandomlyPickImage();
+
         levelSelect.   transform.position = levelPos.  transform.position;
         achievements.  transform.position = achievePos.transform.position;
         quitConnection.transform.position = disconPos. transform.position;
@@ -176,7 +207,8 @@ public class MainButtonManager : MonoBehaviour
         levelSelect.   transform.DOMove(levelTargetPos,   movingTime).       SetEase(Ease.OutCubic);
         achievements.  transform.DOMove(achieveTargetPos, movingTime + 0.1f).SetEase(Ease.OutCubic);
         settings.      transform.DOMove(setTargetPos,     movingTime + 0.2f).SetEase(Ease.OutCubic);
-        quitConnection.transform.DOMove(disconTargetPos,  movingTime + 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
+        quitConnection.transform.DOMove(disconTargetPos,  movingTime + 0.2f).SetEase(Ease.OutCubic);
+        playerImage   .transform.DOMove(imageTargetPos,   movingTime - 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
     public void QuitNDServer()
     {
@@ -186,24 +218,32 @@ public class MainButtonManager : MonoBehaviour
         achievements.  transform.DOMove(achievePosOut.transform.position, movingTime + 0.1f).SetEase(Ease.OutCubic);
         quitConnection.transform.DOMove(disconPosOut. transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
         settings.      transform.DOMove(setPosOut.    transform.position, movingTime + 0.2f).SetEase(Ease.OutCubic);
+        playerImage.   transform.DOMove(imagePosOut.  transform.position, movingTime - 0.2f).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
 
-        disconnectingText.gameObject.SetActive(true);
-        RandomlyPickTip();
-        tips.gameObject.SetActive(true);
 
-        Invoke(nameof(DisconnectComplete), connectionTime);
+        if (!gameManager.GetMainLoaded())
+        {
+            disconnectingText.gameObject.SetActive(true);
+            RandomlyPickTip();
+            tips.gameObject.SetActive(true);
+
+            Invoke(nameof(DisconnectComplete), connectionTime);
+        }
+        else
+        {
+            ReturnToMainmenu();
+        }
     }
     private void DisconnectComplete()
     {
         disconnectingText.gameObject.SetActive(false);
         tips.gameObject.SetActive(false);
         ReturnToMainmenu();
-        isConnecting = false;
     }
     #endregion
     #region 본격적인 정보창
 
-    #region 임무, 업적, 설정
+    #region 임무, 업적, 설정, 사진
     public void GotoLevelSelect()
     {
         isConnecting    = true;
@@ -225,14 +265,31 @@ public class MainButtonManager : MonoBehaviour
         isAtConnectMenu = false;
         Camera.main.transform.DOMove(settingsPoint.transform.position, movingTime).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
+    public void GotoPicture()
+    {
+        if(!isAtPicture && isAtConnectMenu)
+        {
+            playerImage.transform.DOMove(imagePosOut.transform.position, movingTime).SetEase(Ease.OutCubic);
+            isConnecting = true;
+            isAtConnectMenu = false;
+            isAtPicture = true;
+            Camera.main.transform.DOMove(picturePos.transform.position, movingTime).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
+        }
+    }
     #endregion
 
     private void ReturnPosToMainMenu()
     {
+        if (isAtPicture)
+        {
+            playerImage.transform.DOMove(imageTargetPos, movingTime).SetEase(Ease.OutCubic);
+        }
+        isAtConnectMenu = true;
         isConnecting    = true;
         isAtAchievement = false;
         isAtLevelSelect = false;
-        isAtConnectMenu = true;
+        isAtPicture     = false;
+        isAtSettings    = false;
         Camera.main.transform.DOMove(MAIN_CAMERA_POINT, movingTime).SetEase(Ease.OutCubic).OnComplete(MoveComplete);
     }
     
@@ -293,7 +350,7 @@ public class MainButtonManager : MonoBehaviour
                 QuitNDServer();
                 return;
             case false:
-                if (isAtAchievement || isAtLevelSelect || isAtSettings)
+                if (isAtAchievement || isAtLevelSelect || isAtSettings || isAtPicture)
                 {
                     ReturnPosToMainMenu();
                     return;
@@ -306,7 +363,14 @@ public class MainButtonManager : MonoBehaviour
     // 랜덤으로 tipsArray 에서 불러온 원소를 tips 에 넣음
     private void RandomlyPickTip()
     {
-        int tip = (int)UnityEngine.Random.Range(0f, 8.5f);
+        int tip = (int)UnityEngine.Random.Range(0.0f, 8.5f);
         tips.text = tipsArray[tip];
     }
+
+    private void RandomlyPickImage()
+    {
+        int image = (int)UnityEngine.Random.Range(0.0f, 5.5f);
+        playerImage.sprite = images[image].sprite;
+    }
+
 }

@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour
 
     private SpriteRenderer spriteRenderer = null; //캐릭터 이미지 뒤집기 사용
 
+    private BoxCollider2D boxCollider2D;
+
     private enum Direction
     {
           Up    //위쪽으로 움직임
@@ -39,6 +41,8 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
 
@@ -191,6 +195,8 @@ public class PlayerMove : MonoBehaviour
         turnManager.EndPlayerTurn(1); // 플레이어 턴 종료
 
         yield return new WaitForSeconds(0.1f);
+        boxCollider2D.enabled = false;
+        boxCollider2D.enabled = true;
         isMove = false;
     }
 }

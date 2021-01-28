@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     private ChallengeManager challengeManager = null;
     private GameManager gameManager = null;
+    
+
 
     void Awake() => UM = this;
     private void Start()
@@ -60,11 +62,13 @@ public class UIManager : MonoBehaviour
         {
             case "Awl":
                 theInventory.AcquireItem(item);
+                dialog.instance.DialogStart(1);
                 GameObject.Find("Awl").SetActive(false);
                 return;
 
             case "Thur":
                 theInventory.AcquireItem(item);
+                dialog.instance.DialogStart(2);
                 GameObject.Find("Thur").SetActive(false);
                 return;
 
@@ -80,8 +84,7 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "EmptyBox":
-                IEnumerator dialog_co = dialog.instance.dialog_system_start(0);
-                StartCoroutine(dialog_co);
+                dialog.instance.DialogStart(0);
                 return;
 
             case "Clicker":

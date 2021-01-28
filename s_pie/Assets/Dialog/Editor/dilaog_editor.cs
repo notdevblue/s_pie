@@ -38,8 +38,9 @@ public class dilaog_editor : Editor
                 EditorGUILayout.Space();
                 for (int j = 0; j < Dialog.dialog_cycles[i].info.Count; j++)
                 {
-
-                    EditorGUILayout.LabelField("name");
+                    EditorGUILayout.LabelField("스텐딩 이미지");
+                    Dialog.dialog_cycles[i].info[j].standing = (Sprite)EditorGUILayout.ObjectField(Dialog.dialog_cycles[i].info[j].standing, typeof(Sprite), false, GUILayout.MinWidth(20));
+                    EditorGUILayout.LabelField("이름");
                     Dialog.dialog_cycles[i].info[j].name = EditorGUILayout.TextArea(Dialog.dialog_cycles[i].info[j].name, GUILayout.MinWidth(20));
                     EditorGUILayout.LabelField("지문");
                     Dialog.dialog_cycles[i].info[j].content = EditorGUILayout.TextArea(Dialog.dialog_cycles[i].info[j].content, GUILayout.MinWidth(60), GUILayout.MinHeight(30));

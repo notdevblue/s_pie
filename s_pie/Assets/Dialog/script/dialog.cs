@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class dialog_info
 {
+    public Sprite standing;
     public string name;
     [TextArea(3, 5)]
     public string content;
@@ -29,7 +30,7 @@ public class dialog : MonoBehaviour
     public Queue<string> text_seq = new Queue<string>();                //대화 지문들의 내용을 큐로 저장한다.(끝점을 쉽게 판단하기 위해)
     public string name_;                                                //임시로 저장할 대화 지문의 이름
     public string text_;                                                //임시로 저장할 대화 지문의 내용
-
+    public Image standing_I;
     public Text nameing;                                                //대화 지문 오브젝트에 있는 것을 표시할 오브젝트
     public Text DialogT;                                                //대화 지문 내용 오브젝트
     public Text Next_T;                                               //다음 버튼
@@ -37,6 +38,7 @@ public class dialog : MonoBehaviour
 
     IEnumerator seq_;
     IEnumerator skip_seq;
+    IEnumerator dialog_co;
 
     public float delay;
     public bool running = false;
@@ -55,6 +57,7 @@ public class dialog : MonoBehaviour
     }
     public IEnumerator dialog_system_start(int index)//다이얼로그 출력 시작
     {
+        standing_I = dialog_obj.GetComponent<parameter>().stand_image;
         nameing = dialog_obj.GetComponent<parameter>().name_text;   //다이얼로그 오브젝트에서 각 변수 받아오기
         DialogT = dialog_obj.GetComponent<parameter>().content;
         Next_T = dialog_obj.GetComponent<parameter>().next_text;
@@ -68,7 +71,17 @@ public class dialog : MonoBehaviour
         dialog_obj.gameObject.SetActive(true);
         for (int i = 0; i < dialog_cycles[index].info.Count; i++) //대화 단위를 순서대로 출력
         {
-
+            standing_I.sprite = dialog_cycles[index].info[i].standing;
+                Color color = standing_I.color;
+            if(standing_I.sprite == null)
+            {
+                color.a = 0f;
+            }
+            else
+            {
+                color.a = 1f;
+            }
+            standing_I.color = color;
             nameing.text = dialog_cycles[index].info[i].name;
 
             text_ = text_seq.Dequeue();                                  //대화 지문을 pop
@@ -95,6 +108,12 @@ public class dialog : MonoBehaviour
 
         dialog_cycles[index].check_cycle_read = true;                   //해당 대화 그룹 읽음
         running = false;
+    }
+
+    public void DialogStart(int index)
+    {
+        dialog_co = dialog.instance.dialog_system_start(index);
+        StartCoroutine(dialog_co);
     }
 
     public void DisplayNext(int index, int number)                      //다음 지문으로 넘어가기

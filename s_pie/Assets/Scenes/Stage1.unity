@@ -20950,13 +20950,25 @@ MonoBehaviour:
   dialog_cycles:
   - cycle_name: "\uBE48\uC0C1\uC790"
     info:
-    - name: "\uBE48 \uC0C1\uC790"
+    - standing: {fileID: -8578418458684398838, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+        type: 3}
+      name: "\uBE48 \uC0C1\uC790"
       content: "\uC774 \uC0C1\uC790\uB294 \uBE44\uC5B4\uC788\uB2E4."
       check_read: 0
     cycle_index: 0
     check_cycle_read: 0
+  - cycle_name: "\uC1A1\uACF3 \uBA39\uC5C8\uC744\uB54C"
+    info:
+    - standing: {fileID: -855298285791758126, guid: 400e7e7ace4a9c446bafab90a4690502,
+        type: 3}
+      name: "\uC2A4\uD30C\uC774"
+      content: "\uC1A1\uACF3\uC744 \uC5BB\uC5C8\uB2E4."
+      check_read: 0
+    cycle_index: 1
+    check_cycle_read: 0
   name_: 
   text_: 
+  standing_I: {fileID: 0}
   nameing: {fileID: 0}
   DialogT: {fileID: 0}
   Next_T: {fileID: 0}
@@ -83249,6 +83261,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1723462097627525991, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_Name
+      value: BackGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672797611589684338, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9021671765682854500, guid: 1593a47684b87544798c7f6eb66dbc31,
         type: 3}
       propertyPath: m_SortingOrder
@@ -83369,6 +83391,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9021671765743106263, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021671765743106263, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.010665894
+      objectReference: {fileID: 0}
     - target: {fileID: 9021671765916451110, guid: 1593a47684b87544798c7f6eb66dbc31,
         type: 3}
       propertyPath: m_Name
@@ -83377,6 +83409,16 @@ PrefabInstance:
     - target: {fileID: 9021671765916451110, guid: 1593a47684b87544798c7f6eb66dbc31,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021671765916451111, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021671765916451111, guid: 1593a47684b87544798c7f6eb66dbc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

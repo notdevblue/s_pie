@@ -80,6 +80,8 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "EmptyBox":
+                IEnumerator dialog_co = dialog.instance.dialog_system_start(0);
+                StartCoroutine(dialog_co);
                 return;
 
             case "Clicker":

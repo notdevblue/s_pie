@@ -54,7 +54,7 @@ public class TurnManager : MonoBehaviour
         turnText.text = limitTurn - turn + "턴 남음"; //남은 턴 표시
         if(turn == limitTurn)
         {
-            //TODO: 게임 오버
+            GameManager.Instance.SetGameOver(true); //게임오버
         }
     }
 }

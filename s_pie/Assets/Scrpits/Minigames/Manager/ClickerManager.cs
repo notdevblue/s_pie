@@ -22,13 +22,22 @@ public class ClickerManager : MonoBehaviour
     [SerializeField]
     private bool gameIsClear = false;
     // gameIsClear가 true가 될시 곧바로 이전의 화면으로 넘어가도록 할것.
+    private bool canGameOverCheck = true;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
         audi = gameObject.AddComponent<AudioSource>();
-        
-        StartCoroutine(GameOverCheck());
+        canGameOverCheck = true;
+
+        dialog.instance.DialogStart(4);
+    }
+    private void Update()
+    {
+        if (!dialog.instance.running && canGameOverCheck) // dialog.instance.running이 false값을 가진다면, 대화가 끝난 상태이다.
+        {
+            StartCoroutine(GameOverCheck());
+        }
     }
     public void SetGameIsClear(bool a)
     {
@@ -48,6 +57,7 @@ public class ClickerManager : MonoBehaviour
     }
     IEnumerator GameOverCheck()
     {
+        canGameOverCheck = false;
         yield return new WaitForSeconds(clickTime);
         audi.clip = gameOverSound;
         audi.Play();

@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
             case "Cat_01":
                 if (theInventory.UseItem("Thur"))
                 {
+                    dialog.instance.DialogStart(3);
                     theInventory.AcquireItem(item);
                     GameObject.Find("Cat_01").SetActive(false);
                 }

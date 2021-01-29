@@ -19,7 +19,7 @@ public class TurnManager : MonoBehaviour
     {
         moveAI   = FindObjectsOfType<MoveAI>();
         noticeAI = FindObjectsOfType<NoticeAI>();
-        turnText.text = limitTurn + "턴 남음"; //남은 턴 표시
+        TurnCheck();
     }
 
     public void EndPlayerTurn(int addTurn/*플레이어가 몇턴을 사용했는지 받아옴*/) //플레이어 턴
@@ -51,8 +51,8 @@ public class TurnManager : MonoBehaviour
 
     private void TurnCheck()
     {
-        turnText.text = limitTurn - turn + "턴 남음"; //남은 턴 표시
-        if(turn == limitTurn)
+        turnText.text = limitTurn - turn + "분 남음"; //남은 턴 표시
+        if(turn >= limitTurn)
         {
             GameManager.Instance.SetGameOver(true); //게임오버
         }

@@ -108,6 +108,7 @@ public class dialog : MonoBehaviour
 
         dialog_cycles[index].check_cycle_read = true;                   //해당 대화 그룹 읽음
         running = false;
+        
     }
 
     public void DialogStart(int index)

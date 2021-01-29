@@ -67,10 +67,10 @@ public class NoticeAI : MonoBehaviour
             //case 1:
             //    anim.AIOneStack();
             //    return;
+            //case 1:
+            //    anim.AITwoStack();
+            //    return;
             case 1:
-                anim.AITwoStack();
-                return;
-            case 2:
                 anim.AIFullStack();
                 return;
         }

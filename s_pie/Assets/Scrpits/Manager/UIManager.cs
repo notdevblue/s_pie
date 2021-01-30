@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject clickerMinigame = null;
     [SerializeField]
+    private GameObject tearPictureMinigame = null;
+    [SerializeField]
     private GameObject mainCam = null;
     [SerializeField]
     private GameObject secCam = null;
@@ -111,6 +113,7 @@ public class UIManager : MonoBehaviour
             case "Window":
                 if (gameManager.GetIsPhotoDone())
                 {
+                    gameManager.SetGameClear(true);
                     gameManager.SetIsPhotoDone(false);
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MainLoad");
                 }
@@ -128,11 +131,13 @@ public class UIManager : MonoBehaviour
                     challengeManager.SetChallenge1(true); // 고양이로 클리어시 업적 잠금해제
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
                     gameManager.SetIsPhotoDone(true);
+                    Instantiate(tearPictureMinigame);
                 }
-                if(theInventory.UseItem("Awl"))
+                if (theInventory.UseItem("Awl"))
                 {
                     GameObject.Find("Box_Photo").transform.GetChild(0).gameObject.SetActive(true);
                     gameManager.SetIsPhotoDone(true);
+                    Instantiate(tearPictureMinigame);
                 }
                 return;
 

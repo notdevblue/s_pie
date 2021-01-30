@@ -15,8 +15,12 @@ public class TurnManager : MonoBehaviour
     [Header("여기에 턴 제한 수를 넣으면 됨")]
     [SerializeField] private int limitTurn; //턴 제한
 
+    private GameManager gameManager = null;
+
     private void Awake()
     {
+        gameManager = GameManager.Instance;
+
         moveAI   = FindObjectsOfType<MoveAI>();
         noticeAI = FindObjectsOfType<NoticeAI>();
         TurnCheck();
@@ -52,7 +56,8 @@ public class TurnManager : MonoBehaviour
     private void TurnCheck()
     {
         turnText.text = limitTurn - turn + "분 남음"; //남은 턴 표시
-        if(turn >= limitTurn)
+        gameManager.SetWasteTurn(limitTurn - turn);
+        if (turn >= limitTurn)
         {
             GameManager.Instance.SetGameOver(true); //게임오버
         }

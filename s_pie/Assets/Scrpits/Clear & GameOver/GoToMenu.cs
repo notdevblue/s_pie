@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GoToMenu : MonoBehaviour
 {
-    private float comeBackWait = 3f;
+    private float comeBackWait = 10f;
     private GameManager gameManager = null;
     // Start is called before the first frame update
     void Start()

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int wasteTurn = 0;
 
     private bool isPhotoDone = false;
+    [SerializeField]
     private bool gameClear = false;
     private bool gameOver = false;
     private bool pictureTeared = false;

@@ -115,7 +115,6 @@ public class UIManager : MonoBehaviour
                 {
                     gameManager.SetGameClear(true);
                     gameManager.SetIsPhotoDone(false);
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("MainLoad");
                 }
                 return;
 

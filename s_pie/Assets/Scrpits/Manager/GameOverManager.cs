@@ -15,6 +15,8 @@ public class GameOverManager : MonoBehaviour
     [SerializeField]
     private GameObject star = null;
     [SerializeField]
+    private GameObject emptyStar = null;
+    [SerializeField]
     private GameObject picture = null;
 
     [SerializeField]
@@ -32,16 +34,16 @@ public class GameOverManager : MonoBehaviour
 
     private int starSpawned = 0;
 
-    private int limitStar1 = 0; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
-    private int limitStar2 = 0;
-    private int limitStar3 = 0;
+    private int limitStar1 = 20; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
+    private int limitStar2 = 30;
+    private int limitStar3 = 50;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
 
-        SetText();
         CheckStars();
+        SetText();
     }
     private void Update()
     {
@@ -82,7 +84,22 @@ public class GameOverManager : MonoBehaviour
                     {
                         Instantiate(star, star3Position);
                     }
+                    else
+                    {
+                        Instantiate(emptyStar, star1Position);
+                    }
                 }
+                else
+                {
+                    Instantiate(emptyStar, star1Position);
+                    Instantiate(emptyStar, star2Position);
+                }
+            }
+            else
+            {
+                Instantiate(emptyStar, star1Position);
+                Instantiate(emptyStar, star2Position);
+                Instantiate(emptyStar, star3Position);
             }
         }
     }

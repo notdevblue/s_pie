@@ -62,21 +62,26 @@ public class GameOverManager : MonoBehaviour
         {
             titleText.text = "GameOver";
         }
+        gameManager.SetGameClear(false);
+        gameManager.SetGameOver(false);
     }
     private void CheckStars()
     {
         // 여기서 별들 개수 체크, 소환
-        if(gameManager.GetWasteTurn() >= limitStar1)
+        if (gameManager.GetGameClear())
         {
-            Instantiate(star, star1Position);
-
-            if (gameManager.GetWasteTurn() >= limitStar2)
+            if (gameManager.GetWasteTurn() >= limitStar1)
             {
-                Instantiate(star, star2Position);
+                Instantiate(star, star1Position);
 
-                if (gameManager.GetWasteTurn() >= limitStar3)
+                if (gameManager.GetWasteTurn() >= limitStar2)
                 {
-                    Instantiate(star, star3Position);
+                    Instantiate(star, star2Position);
+
+                    if (gameManager.GetWasteTurn() >= limitStar3)
+                    {
+                        Instantiate(star, star3Position);
+                    }
                 }
             }
         }

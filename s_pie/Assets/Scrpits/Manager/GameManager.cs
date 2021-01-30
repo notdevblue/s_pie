@@ -58,15 +58,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if ((gameOver || gameClear) && pictureTeared)
+        if (gameOver || (gameClear && pictureTeared))
             GameDone();
     }
     private void GameDone()
     {
         if (canGameDoneLoad)
         {
-            gameClear = false;
-            gameOver = false;
             canGameDoneLoad = false;
             SceneManager.LoadScene("GameDone");
         }

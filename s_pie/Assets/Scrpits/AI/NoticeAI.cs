@@ -18,6 +18,7 @@ public class NoticeAI : MonoBehaviour
     private        int      notice            = 0;
     private        SpriteAI anim              = null;
     private        GameManager gameManager    = null;
+    private        string   commentText       = "정찰 요원에게 걸려서 임무를 실패했네, 다음부턴 더 조심하게나."; // 이 AI에 의하여 게임이 오버됐을 때 뜨는 comment
     private static bool     isFound           = false;
     private static bool     isAINoticedPlayer = false;
     public  static bool     getIsFound        { get { return isFound; } } // 으으흠.
@@ -140,9 +141,8 @@ public class NoticeAI : MonoBehaviour
         {
             isAINoticedPlayer = true;
             notice = 0;
-
+            gameManager.SetComment(commentText);
             gameManager.SetGameOver(true);
-            // Debug.Log("AI 가 플레이어를 발견함");
         }
     }
 

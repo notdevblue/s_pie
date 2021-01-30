@@ -30,14 +30,17 @@ public class ClickerManager : MonoBehaviour
         audi = gameObject.AddComponent<AudioSource>();
         canGameOverCheck = true;
 
-        dialog.instance.DialogStart(4);
+        //dialog.instance.DialogStart(4);
     }
     private void Update()
     {
-        if (!dialog.instance.running && canGameOverCheck) // dialog.instance.running이 false값을 가진다면, 대화가 끝난 상태이다.
-        {
-            StartCoroutine(GameOverCheck());
-        }
+        //if (!dialog.instance.running && canGameOverCheck) // dialog.instance.running이 false값을 가진다면, 대화가 끝난 상태이다.
+        //{
+        //    StartCoroutine(GameOverCheck());
+        //}
+        if (canGameOverCheck)
+        StartCoroutine(GameOverCheck());
+
     }
     public void SetGameIsClear(bool a)
     {
@@ -61,6 +64,7 @@ public class ClickerManager : MonoBehaviour
         yield return new WaitForSeconds(clickTime);
         audi.clip = gameOverSound;
         audi.Play();
+        Debug.Log("a");
         yield return new WaitForSeconds(gameOverSoundPlayTime);
         gameManager.SetGameOver(true);
     }

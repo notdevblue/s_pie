@@ -11,8 +11,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private ChallengeSaveData challengeSaveData;
 
+    private string gameOver_Comment = null;
+    private Sprite gameOver_Picture = null;
+
+    private int wasteTurn = 0;
+
     private bool isPhotoDone = false;
+    private bool gameClear = false;
     private bool gameOver = false;
+    private bool pictureTeared = false;
 
     private bool mainLoaded = false;
     private bool canGameDoneLoad = true;
@@ -51,16 +58,50 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (gameOver || isPhotoDone)
+        if ((gameOver || gameClear) && pictureTeared)
             GameDone();
     }
-    public void GameDone()
+    private void GameDone()
     {
         if (canGameDoneLoad)
         {
+            gameClear = false;
+            gameOver = false;
             canGameDoneLoad = false;
             SceneManager.LoadScene("GameDone");
         }
+    }
+    public Sprite GetGameOver_Picture()
+    {
+        return gameOver_Picture;
+    }
+    public void SetGameOver_Picture(Sprite a)
+    {
+        gameOver_Picture = a;
+    }
+    public string GetComment()
+    {
+        return gameOver_Comment;
+    }
+    public void SetComment(string a)
+    {
+        gameOver_Comment = a;
+    }
+    public int GetWasteTurn()
+    {
+        return wasteTurn;
+    }
+    public void SetWasteTurn(int a)
+    {
+        wasteTurn = a;
+    }
+    public void SetPictureTeared(bool a)
+    {
+        pictureTeared = a;
+    }
+    public bool GetPictureTeared()
+    {
+        return pictureTeared;
     }
     public void SetCanGameDoneLoad(bool a)
     {
@@ -73,6 +114,14 @@ public class GameManager : MonoBehaviour
     public void SetMainLoaded(bool a)
     {
         mainLoaded = a;
+    }
+    public void SetGameClear(bool a)
+    {
+        gameClear = a;
+    }
+    public bool GetGameClear()
+    {
+        return gameClear;
     }
     public void SetGameOver(bool a)
     {

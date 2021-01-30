@@ -5,7 +5,6 @@ using UnityEngine;
 public class TearScirpt : MonoBehaviour
 {
     private float waitTime = 0.1f;
-    private float clearTime = 5f;
 
     [SerializeField]
     private int firstDirection = 1;
@@ -29,32 +28,47 @@ public class TearScirpt : MonoBehaviour
     [SerializeField]
     private bool mouseMovedRight = false;
 
+    [SerializeField]
+    private Sprite tearedPicture = null;
+    private string gameOver_Comment = "이번 미션은 아주 잘해줬네, 일에 대한 감각은 늘었겠지? 그런데, 그... 고양이좀 데려오지 그랬나.";
+
+    private SpriteRenderer spriteRenderer = null;
+    private AudioSource audi = null;
+
+    private GameManager gameManager = null;
+
     private bool canMouseObserved = true;
+    private float time = 0f;
 
     private bool gameClear = false;
     private bool gameOver = false;
+    private bool pictureTeared = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(TimeCheck());
+        gameManager = GameManager.Instance;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audi = GetComponent<AudioSource>();
         SetDirection();
+        // 다이얼로그 시작
     }
     // Update is called once per frame
     void Update()
     {
+        // if() // 다이얼 로그가 끝났을 때
         SetMousePosition();
         StartCoroutine(SetPasteMousePosition());
         MouseMoveCheck();
         CheckMouseMove();
         CheckClear();
+        FadeIn();
 
     }
-    private IEnumerator TimeCheck()
+    private IEnumerator GameClearSet()
     {
-        yield return new WaitForSeconds(clearTime);
-        // 임무 실패
-        gameOver = true;
+        yield return new WaitForSeconds(4f);
+        gameClear = true;
     }
     private IEnumerator SetPasteMousePosition()
     {
@@ -88,7 +102,6 @@ public class TearScirpt : MonoBehaviour
             {
                 // 마우스가 아래쪽으로 이동한 경우
                 mouseMovedDown = true;
-
             }
             if (currentMousePosition.x > pasteMousePosition.x)
             {
@@ -246,10 +259,25 @@ public class TearScirpt : MonoBehaviour
     private void CheckClear()
     {
         bool a = (firstDirection == 0 && secondDirection == 0 && thirdDirection == 0 && forthDirection == 0);
-        if(a)
-            gameClear = true;
+        if (a && !pictureTeared)
+        {
+            pictureTeared = true;
+            spriteRenderer.sprite = tearedPicture;
+            audi.Play();
+            gameManager.SetComment(gameOver_Comment);
+            gameManager.SetGameOver_Picture(tearedPicture);
+            StartCoroutine(GameClearSet());
+        }
     }
-    public bool GetGameClear()
+    private void FadeIn()
+    {
+        if(pictureTeared)
+        {
+            time += Time.deltaTime;
+            spriteRenderer.color = new Color(1, 1, 1, time / 2);
+        }
+    }
+    public bool GetMiniGameClear()
     {
         return gameClear;
     }

@@ -38541,6 +38541,8 @@ MonoBehaviour:
   theInventory: {fileID: 936342005}
   clickerMinigame: {fileID: 7348670732291958482, guid: b2e15ebcc5815a945ada13a1ffb7bef7,
     type: 3}
+  tearPictureMinigame: {fileID: 8272731945811320355, guid: b19cfa80fc1872342b3cbd9f3a1bd04c,
+    type: 3}
   mainCam: {fileID: 111775000}
   secCam: {fileID: 2097846283}
   player: {fileID: 435574792}

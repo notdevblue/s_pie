@@ -2587,7 +2587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\t \t\t\uCCAB \uC791\uC804\n1988.28.4"
+  m_Text: "\t \t\t\uCCAB \uC791\uC804\n1943.28.4"
 --- !u!222 &348012164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4509,7 +4509,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\t\uC88B\uC544 \uBCF4\uC774\uB294 \uC2DD\uBB3C\n1988.16.4"
+  m_Text: "\t\uC88B\uC544 \uBCF4\uC774\uB294 \uC2DD\uBB3C\n1943.16.4"
 --- !u!222 &581568130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5549,7 +5549,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.645, g: 0.49896124, b: 0.37539, a: 0}
+  m_BackGroundColor: {r: 0.3647059, g: 0.32941177, b: 0.3254902, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11173,7 +11173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\t\uC791\uC804 \uC911\uC5D0 \uB9CC\uB09C \uACE0\uC591\uC774\n1988.21.5"
+  m_Text: "\t\uC791\uC804 \uC911\uC5D0 \uB9CC\uB09C \uACE0\uC591\uC774\n1943.21.5"
 --- !u!222 &1709284425
 CanvasRenderer:
   m_ObjectHideFlags: 0

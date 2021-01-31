@@ -36,7 +36,7 @@ public class dialog : MonoBehaviour
     public Text Next_T;                                               //다음 버튼
     public GameObject dialog_obj;                                       //대화 지문 오브젝트
 
-    [SerializeField] private Canvas uiCanvas = null;
+    private GameObject uiCanvas = null;
 
     IEnumerator seq_;
     IEnumerator skip_seq;
@@ -47,6 +47,7 @@ public class dialog : MonoBehaviour
 
     private void Start()
     {
+        uiCanvas = GameObject.Find("Canvas");
         dialog_obj = GameObject.Find("Dialog Canvas").transform.Find("Dialog_obj").gameObject;
     }
 

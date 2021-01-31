@@ -36,6 +36,8 @@ public class dialog : MonoBehaviour
     public Text Next_T;                                               //다음 버튼
     public GameObject dialog_obj;                                       //대화 지문 오브젝트
 
+    [SerializeField] private Canvas uiCanvas = null;
+
     IEnumerator seq_;
     IEnumerator skip_seq;
     IEnumerator dialog_co;
@@ -114,6 +116,7 @@ public class dialog : MonoBehaviour
     public void DialogStart(int index)
     {
         PlayerMove.isPossible = false;
+        uiCanvas.gameObject.SetActive(false);
         dialog_co = dialog.instance.dialog_system_start(index);
         StartCoroutine(dialog_co);
     }
@@ -126,6 +129,7 @@ public class dialog : MonoBehaviour
         if (text_seq.Count == 0)                                        //다음 지문이 없다면
         {
             PlayerMove.isPossible = true;
+            uiCanvas.gameObject.SetActive(true);
             dialog_obj.gameObject.SetActive(false);                     //다이얼로그 끄기
         }
         StopCoroutine(seq_);                                            //실행중인 코루틴 종료

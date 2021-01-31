@@ -34,9 +34,9 @@ public class GameOverManager : MonoBehaviour
 
     private int starSpawned = 0;
 
-    private int limitStar1 = 20; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
-    private int limitStar2 = 30;
-    private int limitStar3 = 50;
+    private int limitStar1 = 60; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
+    private int limitStar2 = 50;
+    private int limitStar3 = 45;
 
     private void Start()
     {

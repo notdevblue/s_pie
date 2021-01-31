@@ -9,7 +9,7 @@ public class clickerScript : MonoBehaviour
     private ClickerManager clickerManager = null;
     private GameManager gameManager = null;
 
-    private string commentText = "카메라에게 자네의 얼굴이 찍혔잖나, 이거, 처리할 사진만 늘었구만. 앞으로는 조심하게.";
+    private string commentText = "카메라에 너가 찍혔어. 빨리 카메라 부수고 나와.";
     private void Start()
     {
         gameManager = GameManager.Instance;

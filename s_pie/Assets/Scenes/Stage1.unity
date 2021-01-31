@@ -6428,7 +6428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435574792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 1.95, z: -2.1}
+  m_LocalPosition: {x: -6.5, y: 2, z: -2.1}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12870,7 +12870,7 @@ MonoBehaviour:
     info:
     - standing: {fileID: -7317400572499623495, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
         type: 3}
-      name: "\uBE48 \uC0C1\uC790"
+      name: "\uC2A4\uD30C"
       content: "\uC774 \uC0C1\uC790\uB294 \uBE44\uC5B4\uC788\uB2E4."
       check_read: 0
     cycle_index: 0
@@ -12884,6 +12884,14 @@ MonoBehaviour:
       check_read: 0
     cycle_index: 1
     check_cycle_read: 0
+  - cycle_name: dasdas
+    info:
+    - standing: {fileID: 0}
+      name: asd
+      content: asdasd
+      check_read: 0
+    cycle_index: 2
+    check_cycle_read: 0
   name_: 
   text_: 
   standing_I: {fileID: 0}
@@ -12891,7 +12899,6 @@ MonoBehaviour:
   DialogT: {fileID: 0}
   Next_T: {fileID: 0}
   dialog_obj: {fileID: 0}
-  uiCanvas: {fileID: 0}
   delay: 0.025
   running: 0
 --- !u!4 &745889126
@@ -13420,7 +13427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2b11684bfc6118542a132348905293d1, type: 2}
-  curInterationName: 0
+  curInterationName: 100
 --- !u!61 &771035830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39176,7 +39183,7 @@ MonoBehaviour:
   player: {fileID: 435574792}
   slider: {fileID: 1210648560}
   virtualPad: {fileID: 1524072426}
-  curBtn: 
+  curBtn: 0
   interactionBtn: {fileID: 1777423214}
 --- !u!4 &2145418094
 Transform:

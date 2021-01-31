@@ -33,21 +33,27 @@ public class MainButtonManager : MonoBehaviour
     #endregion
     #region 변수들
 
-    private bool     isConnecting    = false;
-    private bool     isAtConnectMenu = false;
-    private bool     isAtLevelSelect = false;
-    private bool     isAtAchievement = false;
-    private bool     isAtSettings    = false;
-    private bool     isAtPicture     = false;
-    private string[] tipsArray;
+    private bool         isConnecting    = false;
+    private bool         isAtConnectMenu = false;
+    private bool         isAtLevelSelect = false;
+    private bool         isAtAchievement = false;
+    private bool         isAtSettings    = false;
+    private bool         isAtPicture     = false;
+    //private Resolution[] resolutions;
+    private string[]     tipsArray;
+    
+
+
 
     [Header("볼륨 조절 용 슬라이더")]
-    [SerializeField] private Slider      volumeSlider = null;
-                     private AudioSource audioSource  = null;
+    [SerializeField] private Slider      volumeSlider   = null;
+                     private AudioSource audioSource    = null;
 
+    //[Header("해상도 설정용 드롭다운")]
+    //[SerializeField] private Dropdown    resolutionMenu = null;
 
     [Header("메인화면 렌덤 이미지 용 배열")]
-    [SerializeField] private Image[] images;
+    [SerializeField] private Image[]     images;
 
     [Header("로딩 시간")]
     [SerializeField] private float  connectionTime = 3.0f;
@@ -133,6 +139,16 @@ public class MainButtonManager : MonoBehaviour
 
     private void Start()
     {
+        //resolutions = Screen.resolutions;
+        //foreach (Resolution res in resolutions)
+        //{
+        //    print(res.width + "x" + res.height);
+            
+        //}
+        ////Screen.SetResolution(resolutions[0].width, resolutions[0].height, true);
+        //resolutionMenu.ClearOptions();
+        //resolutionMenu.AddOptions();
+
         volumeSlider.value = 0.4f;
         if(gameManager.GetMainLoaded())
         {
@@ -331,6 +347,14 @@ public class MainButtonManager : MonoBehaviour
     }
     #endregion
 
+    #region 해상도 설정
+    public void FullScreen()
+    {
+#if UNITY_STANDALONE
+        Screen.fullScreen = !Screen.fullScreen;
+#endif
+    }
+    #endregion
 
     // 끄는 용도
     /// <summary>

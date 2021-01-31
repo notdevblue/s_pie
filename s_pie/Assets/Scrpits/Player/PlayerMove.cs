@@ -234,15 +234,15 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             transform.localPosition += targetPosition;
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.01f);
         }
         animator.SetBool("Move", false);
-        
 
-        yield return new WaitForSeconds(0.1f);
+        turnManager.EndPlayerTurn(1); // 플레이어 턴 종료
+        yield return new WaitForSeconds(0.2f);
         boxCollider2D.enabled = false;
         boxCollider2D.enabled = true;
-        turnManager.EndPlayerTurn(1); // 플레이어 턴 종료
+        
         isMove = false;
     }
 }

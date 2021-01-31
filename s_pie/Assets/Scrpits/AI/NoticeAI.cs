@@ -92,24 +92,32 @@ public class NoticeAI : MonoBehaviour
         if (MoveAI.getIsYBigger)
         {
             isAtSight = (playerPos.y <= maxY) && (playerPos.y > transform.position.y) && isAtSameX;
+            if(isAtSight)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -2.2f);
+            }
         }
         else
         {
             isAtSight = (playerPos.y >= minY) && (playerPos.y < transform.position.y) && isAtSameX;
+            if (isAtSight)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -2.0f);
+            }
         }
         return isAtSight;
     }
 
     void LookForPlayer()
     {
-        Debug.Log($"{transform.position} AI 위치 값");
-        Debug.Log($"{playerMove.getPlayerHeading} 플레이어 목표 값");
-        bool isAtHeading = CheckPlayer(playerMove.getPlayerHeading);
+        //Debug.Log($"{transform.position} AI 위치 값");
+        //Debug.Log($"{playerMove.getPlayerHeading} 플레이어 목표 값");
+        //bool isAtHeading = CheckPlayer(playerMove.getPlayerHeading);
 
-        Debug.Log($"{player.transform.position} 플레이어 현재 값");
+        //Debug.Log($"{player.transform.position} 플레이어 현재 값");
         bool isAtSight   = CheckPlayer(player.transform.position);
 
-        if(isAtSight || isAtHeading)
+        if(isAtSight)
         {
             Debug.Log("시아 안");
             notice = (notice == 3) ? 3 : ++notice;

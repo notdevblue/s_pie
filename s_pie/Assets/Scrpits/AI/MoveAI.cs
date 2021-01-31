@@ -100,11 +100,11 @@ public class MoveAI : MonoBehaviour
                 switch (isYBigger)
                 {
                     case true:
-                        anim.AIDown(); // 점점 꼬여가는 코드
+                        
                         transform.DOMoveY(transform.position.y + 1, moveDelay);
                         break;
                     case false:
-                        anim.AIUp();   // 이것이 밤 코딩
+                        
                         transform.DOMoveY(transform.position.y - 1, moveDelay);
                         break;
                 }
@@ -228,10 +228,12 @@ public class MoveAI : MonoBehaviour
         {
             if (transform.position.y < destination[des + 1].transform.position.y)
             {
+                anim.AIDown(); // 점점 꼬여가는 코드
                 isYBigger = true;
             }
             else
             {
+                anim.AIUp();   // 이것이 밤 코딩
                 isYBigger = false;
             }
         }

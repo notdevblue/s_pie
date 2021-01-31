@@ -21,6 +21,33 @@ public class PlayerMove : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
 
+
+    public  Vector2 getPlayerHeading { get; private set; }
+    private void DoSetPlayerHeading(Direction myDirection)
+    {
+        Debug.Log($"{transform.position} 플레이어 현재 위치");
+
+        Vector2 playerPos = transform.position;
+        switch (myDirection)
+        {
+            case Direction.Up:
+                playerPos.y += distance;
+                break;
+            case Direction.Down:
+                playerPos.y -= distance;
+                break;
+            case Direction.Right:
+                playerPos.x += distance;
+                break;
+            case Direction.Left:
+                playerPos.x -= distance;
+                break;
+        }
+        getPlayerHeading = playerPos;
+
+        Debug.Log($"{getPlayerHeading} 플레이어 목표 위치");
+    }
+
     private enum Direction
     {
           Up    //위쪽으로 움직임
@@ -79,6 +106,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (turnManager.playerTurn == true) //플레이어 턴 인지 확인
             {
+                DoSetPlayerHeading(Direction.Up);
                 if (NoPassingCheck(Direction.Up) == true)
                     return;
 
@@ -93,6 +121,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (turnManager.playerTurn == true)
             {
+                DoSetPlayerHeading(Direction.Down);
                 if (NoPassingCheck(Direction.Down) == true)
                     return;
 
@@ -107,6 +136,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (turnManager.playerTurn == true)
             {
+                DoSetPlayerHeading(Direction.Right);
                 if (NoPassingCheck(Direction.Right) == true)
                     return;
 
@@ -121,6 +151,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (turnManager.playerTurn == true)
             {
+                DoSetPlayerHeading(Direction.Left);
                 if (NoPassingCheck(Direction.Left) == true)
                     return;
 
@@ -156,8 +187,12 @@ public class PlayerMove : MonoBehaviour
         hit = Physics2D.Linecast(start, end, layerMask);
 
         if (hit.transform != null)
+        {
+            Debug.Log("플레이어가 뭔가를 찾음");
             return true;
+        }
 
+        Debug.Log("플레이어가 못 찾음");
         return false;
     }
 

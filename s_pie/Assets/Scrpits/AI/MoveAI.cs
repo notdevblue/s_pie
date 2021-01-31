@@ -28,6 +28,7 @@ public class MoveAI : MonoBehaviour
     [Header("이동 속도")]
     [SerializeField] private float        moveDelay      = 0.1f;
 
+    private        NoticeAI noticeAI = null;
     private        int  des          = 0;                          // 배열 순환용
     private        bool isToGo       = true;                       // 배열 순환용
     private        bool isToGoBack   = false;                      // 배열 순환용
@@ -54,6 +55,7 @@ public class MoveAI : MonoBehaviour
     void Awake()
     {
         anim = FindObjectOfType<SpriteAI>();
+        noticeAI = FindObjectOfType<NoticeAI>();
 
         // 뭐 빠트리고 실행시키면 귀찮으니
         if (!CheckDestinationStatus())
@@ -82,7 +84,10 @@ public class MoveAI : MonoBehaviour
     {
         PositionCalculate();
         CheckifArrived();
-        ToNextDestination();
+        if(!noticeAI.CheckFirst())
+        {
+            ToNextDestination();
+        }
     }
 
     void ToNextDestination()

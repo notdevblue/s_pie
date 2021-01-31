@@ -30,7 +30,7 @@ public class TearScirpt : MonoBehaviour
 
     [SerializeField]
     private Sprite tearedPicture = null;
-    private string gameOver_Comment = "좋아, 임무 잘 해줬어. 이제 좀 익숙해졌지? 그런데 고양이좀 대려오지 그랬냐...";
+    private string gameOver_Comment = "좋아, 임무 잘 해줬어. 이제 좀 익숙해졌지?\n그런데 고양이좀 데려오지 그랬냐...";
 
     private SpriteRenderer spriteRenderer = null;
     private AudioSource audi = null;

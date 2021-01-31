@@ -58,11 +58,11 @@ public class GameOverManager : MonoBehaviour
         wasteTurnText.text = string.Format("\n  {0}분", gameManager.GetWasteTurn());
         if(gameManager.GetGameClear())
         {
-            titleText.text = "GameClear";
+            titleText.text = "임무 성공";
         }
         else if(gameManager.GetGameOver())
         {
-            titleText.text = "GameOver";
+            titleText.text = "임무 실패";
         }
         gameManager.SetGameClear(false);
         gameManager.SetGameOver(false);

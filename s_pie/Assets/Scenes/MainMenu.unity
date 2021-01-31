@@ -5834,6 +5834,7 @@ MonoBehaviour:
   challengeSaveData:
     challengeClear: 0000
     testNum: 0
+  gameClear: 0
 --- !u!4 &798054819
 Transform:
   m_ObjectHideFlags: 0

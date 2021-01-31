@@ -43,7 +43,12 @@ public class dialog : MonoBehaviour
     public float delay;
     public bool running = false;
 
-   
+    private void Start()
+    {
+        dialog_obj = GameObject.Find("Dialog Canvas").transform.Find("Dialog_obj").gameObject;
+    }
+
+
     void Awake()    //싱글톤 패턴으로 어느 씬에서든 접근 가능하게 한다.
     {
         if (instance == null)
@@ -52,8 +57,7 @@ public class dialog : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
-        dialog_obj = GameObject.Find("Dialog Canvas").transform.Find("Dialog_obj").gameObject;
+        //DontDestroyOnLoad(gameObject);
     }
     public IEnumerator dialog_system_start(int index)//다이얼로그 출력 시작
     {

@@ -92,9 +92,14 @@ public class UIManager : MonoBehaviour
                     theInventory.AcquireItem(item);
                     GameObject.Find("Cat_01").SetActive(false);
                 }
+                else
+                {
+                    dialog.instance.DialogStart(4);
+                }
                 return;
 
             case "Cat_02":
+                dialog.instance.DialogStart(5);
                 return;
 
             case "EmptyBox":

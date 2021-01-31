@@ -13194,29 +13194,99 @@ MonoBehaviour:
   dialog_cycles:
   - cycle_name: "\uBE48\uC0C1\uC790"
     info:
-    - standing: {fileID: -7317400572499623495, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+    - standing: {fileID: -524559491155028263, guid: 15cd85924b23c3e47b86100ea00f10a2,
         type: 3}
-      name: "\uC2A4\uD30C"
+      name: "\uBE48 \uC0C1\uC790"
       content: "\uC774 \uC0C1\uC790\uB294 \uBE44\uC5B4\uC788\uB2E4."
       check_read: 0
     cycle_index: 0
     check_cycle_read: 0
   - cycle_name: "\uC1A1\uACF3 \uBA39\uC5C8\uC744\uB54C"
     info:
-    - standing: {fileID: -855298285791758126, guid: 400e7e7ace4a9c446bafab90a4690502,
+    - standing: {fileID: -8079357727930904666, guid: 419076ba08918d841bdef07a92ec7f14,
         type: 3}
-      name: "\uC2A4\uD30C\uC774"
+      name: "\uC1A1\uACF3"
       content: "\uC1A1\uACF3\uC744 \uC5BB\uC5C8\uB2E4."
       check_read: 0
     cycle_index: 1
     check_cycle_read: 0
-  - cycle_name: dasdas
+  - cycle_name: "\uCE04\uB974 \uD68D\uB4DD"
     info:
-    - standing: {fileID: 0}
-      name: asd
-      content: asdasd
+    - standing: {fileID: -8903527100886083876, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uCE04\uB974"
+      content: "\uCE04\uB974\uB97C \uC5BB\uC5C8\uB2E4."
+      check_read: 0
+    - standing: {fileID: -7317400572499623495, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+        type: 3}
+      name: "\uC62C\uB9AC\uBC84"
+      content: "\uC5B4\uB514\uC5D0 \uC4F0\uC9C0..."
       check_read: 0
     cycle_index: 2
+    check_cycle_read: 0
+  - cycle_name: "\uB0E5\uC90D"
+    info:
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "\uC560\uC639."
+      check_read: 0
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "\uC560\uC560\uC560\uC560\uC560\uC560\uC560\uC560\uC560\uC639."
+      check_read: 0
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "\uC560\uC639!"
+      check_read: 0
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "(\uB0E5\uB0E5\uC774\uAC00 \uB2F9\uC2E0\uC774 \uAC00\uC9C0\uACE0 \uC788\uB294
+        \uCE04\uB974\uB97C \uBC1C\uACAC\uD569\uB2C8\uB2E4.)"
+      check_read: 0
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "(\uACE0\uC591\uC774\uAC00 \uB2F9\uC2E0\uC744 \uB530\uB974\uB294 \uAC78\uAE4C\uC694...)"
+      check_read: 0
+    - standing: {fileID: 8736879404337289822, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+        type: 3}
+      name: "\uC62C\uB9AC\uBC84"
+      content: "\uC6B0\uB9AC \uC544\uD30C\uD2B8\uC5D0\uC11C \uACE0\uC591\uC774 \uBABB
+        \uD0A4\uC6B0\uB294\uB370..."
+      check_read: 0
+    cycle_index: 3
+    check_cycle_read: 0
+  - cycle_name: "\uB0E5\uB0E5\uC774 \uCE04\uB974 \uC5C6\uC744 \uB54C"
+    info:
+    - standing: {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "\uC560\uC639."
+      check_read: 0
+    - standing: {fileID: 6448633719766501388, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+        type: 3}
+      name: "\uC62C\uB9AC\uBC84"
+      content: "\uCEE4\uC5FD\uB2E4..."
+      check_read: 0
+    cycle_index: 4
+    check_cycle_read: 0
+  - cycle_name: "2\uCE35\uB0E5\uC774"
+    info:
+    - standing: {fileID: 639315690409418565, guid: 419076ba08918d841bdef07a92ec7f14,
+        type: 3}
+      name: "\uB0E5\uB0E5\uC774"
+      content: "\uC560\uC639."
+      check_read: 0
+    - standing: {fileID: -7317400572499623495, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55,
+        type: 3}
+      name: "\uC62C\uB9AC\uBC84"
+      content: "\uC120\uBC30 \uACE0\uC591\uC774\uB791 \uB2EE\uC558\uB124..."
+      check_read: 0
+    cycle_index: 5
     check_cycle_read: 0
   name_: 
   text_: 
@@ -13753,7 +13823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2b11684bfc6118542a132348905293d1, type: 2}
-  curInterationName: 100
+  curInterationName: 0
 --- !u!61 &771035830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19574,6 +19644,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1077659619}
   - component: {fileID: 1077659620}
+  - component: {fileID: 1077659622}
+  - component: {fileID: 1077659621}
   m_Layer: 0
   m_Name: C1_3
   m_TagString: Untagged
@@ -19645,6 +19717,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1077659621
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077659618}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.5709007, y: -3.6221917}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8699813, y: 1.8144917}
+  m_EdgeRadius: 0
+--- !u!114 &1077659622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077659618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b6594c89f70f442bfdbbac7ab6e1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  curInterationName: 3
 --- !u!1 &1089205077
 GameObject:
   m_ObjectHideFlags: 0

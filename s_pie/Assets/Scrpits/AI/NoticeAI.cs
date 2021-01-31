@@ -19,7 +19,7 @@ public class NoticeAI : MonoBehaviour
     private        SpriteAI    anim              = null;
     private        GameManager gameManager       = null;
     private        PlayerMove  playerMove        = null;
-    private        string      commentText       = "정찰 요원에게 걸려서 임무를 실패했네, 다음부턴 더 조심하게나."; // 이 AI에 의하여 게임이 오버됐을 때 뜨는 comment
+    private        string      commentText       = "발각됬어, 빨리 탈출해."; // 이 AI에 의하여 게임이 오버됐을 때 뜨는 comment
     private static bool        isFound           = false;
     private static bool        isAINoticedPlayer = false;
     public  static bool        getIsFound        { get { return isFound; } } // 으으흠.
@@ -87,26 +87,34 @@ public class NoticeAI : MonoBehaviour
         bool isAtSameX = (playerPos.x < (transform.position.x + 0.5f)) && (playerPos.x > (transform.position.x - 0.5f));
 
 
-        Debug.Log(MoveAI.getIsYBigger);
+        //Debug.Log(MoveAI.getIsYBigger);
 
         if (MoveAI.getIsYBigger)
         {
             isAtSight = (playerPos.y <= maxY) && (playerPos.y > transform.position.y) && isAtSameX;
+            if(isAtSight)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -2.2f);
+            }
         }
         else
         {
             isAtSight = (playerPos.y >= minY) && (playerPos.y < transform.position.y) && isAtSameX;
+            if (isAtSight)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -2.0f);
+            }
         }
         return isAtSight;
     }
 
     void LookForPlayer()
     {
-        Debug.Log($"{transform.position} AI 위치 값");
+        //Debug.Log($"{transform.position} AI 위치 값");
         //Debug.Log($"{playerMove.getPlayerHeading} 플레이어 목표 값");
-        bool isAtHeading = CheckPlayer(playerMove.getPlayerHeading);
+        //bool isAtHeading = CheckPlayer(playerMove.getPlayerHeading);
 
-        Debug.Log($"{player.transform.position} 플레이어 현재 값");
+        //Debug.Log($"{player.transform.position} 플레이어 현재 값");
         bool isAtSight   = CheckPlayer(player.transform.position);
 
         if(isAtSight)

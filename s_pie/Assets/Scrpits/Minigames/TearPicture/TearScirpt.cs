@@ -30,7 +30,7 @@ public class TearScirpt : MonoBehaviour
 
     [SerializeField]
     private Sprite tearedPicture = null;
-    private string gameOver_Comment = "이번 미션은 아주 잘해줬네, 일에 대한 감각은 늘었겠지? 그런데, 그... 고양이좀 데려오지 그랬나.";
+    private string gameOver_Comment = "좋아, 임무 잘 해줬어. 이제 좀 익숙해졌지?\n그런데 고양이좀 데려오지 그랬냐...";
 
     private SpriteRenderer spriteRenderer = null;
     private AudioSource audi = null;
@@ -262,6 +262,8 @@ public class TearScirpt : MonoBehaviour
         if (a && !pictureTeared)
         {
             pictureTeared = true;
+            GameObject tearObject = GameObject.Find("Tear_image_0");
+            Destroy(tearObject);
             spriteRenderer.sprite = tearedPicture;
             audi.Play();
             gameManager.SetComment(gameOver_Comment);

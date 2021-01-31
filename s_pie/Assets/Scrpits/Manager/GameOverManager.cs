@@ -34,9 +34,9 @@ public class GameOverManager : MonoBehaviour
 
     private int starSpawned = 0;
 
-    private int limitStar1 = 20; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
-    private int limitStar2 = 30;
-    private int limitStar3 = 50;
+    private int limitStar1 = 60; // 이 숫자 이상으로 턴을 남겼으면 별 한개.
+    private int limitStar2 = 50;
+    private int limitStar3 = 45;
 
     private void Start()
     {
@@ -58,11 +58,11 @@ public class GameOverManager : MonoBehaviour
         wasteTurnText.text = string.Format("\n  {0}분", gameManager.GetWasteTurn());
         if(gameManager.GetGameClear())
         {
-            titleText.text = "GameClear";
+            titleText.text = "임무 성공";
         }
         else if(gameManager.GetGameOver())
         {
-            titleText.text = "GameOver";
+            titleText.text = "임무 실패";
         }
         gameManager.SetGameClear(false);
         gameManager.SetGameOver(false);
@@ -72,15 +72,15 @@ public class GameOverManager : MonoBehaviour
         // 여기서 별들 개수 체크, 소환
         if (gameManager.GetGameClear())
         {
-            if (gameManager.GetWasteTurn() >= limitStar1)
+            if (gameManager.GetWasteTurn() <= limitStar1)
             {
                 Instantiate(star, star1Position);
 
-                if (gameManager.GetWasteTurn() >= limitStar2)
+                if (gameManager.GetWasteTurn() <= limitStar2)
                 {
                     Instantiate(star, star2Position);
 
-                    if (gameManager.GetWasteTurn() >= limitStar3)
+                    if (gameManager.GetWasteTurn() <= limitStar3)
                     {
                         Instantiate(star, star3Position);
                     }

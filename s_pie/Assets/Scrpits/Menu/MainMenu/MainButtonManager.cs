@@ -33,23 +33,34 @@ public class MainButtonManager : MonoBehaviour
     #endregion
     #region 변수들
 
-    private bool     isConnecting    = false;
-    private bool     isAtConnectMenu = false;
-    private bool     isAtLevelSelect = false;
-    private bool     isAtAchievement = false;
-    private bool     isAtSettings    = false;
-    private bool     isAtPicture     = false;
-    private string[] tipsArray;
+    private bool         isConnecting    = false;
+    private bool         isAtConnectMenu = false;
+    private bool         isAtLevelSelect = false;
+    private bool         isAtAchievement = false;
+    private bool         isAtSettings    = false;
+    private bool         isAtPicture     = false;
+    //private Resolution[] resolutions;
+    private string[]     tipsArray;
+    
+
+
+
+    [Header("볼륨 조절 용 슬라이더")]
+    [SerializeField] private Slider      volumeSlider   = null;
+                     private AudioSource audioSource    = null;
+
+    //[Header("해상도 설정용 드롭다운")]
+    //[SerializeField] private Dropdown    resolutionMenu = null;
 
     [Header("메인화면 렌덤 이미지 용 배열")]
-    [SerializeField] private Image[] images;
+    [SerializeField] private Image[]     images;
 
     [Header("로딩 시간")]
     [SerializeField] private float  connectionTime = 3.0f;
     [Header("화면 전환 시간")]
     [SerializeField] private float  movingTime     = 1.5f;
     [Header("입력 막는 용도")]
-    [SerializeField] private Canvas blockInput = null;
+    [SerializeField] private Canvas blockInput     = null;
 
     #region 카메라 이동 위한 변수들
     [Header("레벨 선택 위치")]
@@ -90,6 +101,7 @@ public class MainButtonManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.Instance;
+        audioSource = GetComponent<AudioSource>();
         #region 로딩시 나오는 팁
         {
             tipsArray = new string[9];
@@ -127,6 +139,17 @@ public class MainButtonManager : MonoBehaviour
 
     private void Start()
     {
+        //resolutions = Screen.resolutions;
+        //foreach (Resolution res in resolutions)
+        //{
+        //    print(res.width + "x" + res.height);
+            
+        //}
+        ////Screen.SetResolution(resolutions[0].width, resolutions[0].height, true);
+        //resolutionMenu.ClearOptions();
+        //resolutionMenu.AddOptions();
+
+        volumeSlider.value = 0.4f;
         if(gameManager.GetMainLoaded())
         {
             quitButton.gameObject.SetActive(false);
@@ -140,6 +163,7 @@ public class MainButtonManager : MonoBehaviour
     // 벡키용 Update 였던 것
     private void Update()
     {
+        audioSource.volume = volumeSlider.value;
         switch (isConnecting) // 움직이는 중에 꺼지면 안된다
         {
             case true:
@@ -323,6 +347,14 @@ public class MainButtonManager : MonoBehaviour
     }
     #endregion
 
+    #region 해상도 설정
+    public void FullScreen()
+    {
+#if UNITY_STANDALONE
+        Screen.fullScreen = !Screen.fullScreen;
+#endif
+    }
+    #endregion
 
     // 끄는 용도
     /// <summary>

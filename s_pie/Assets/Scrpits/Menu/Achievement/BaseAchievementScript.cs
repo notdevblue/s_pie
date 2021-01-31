@@ -43,12 +43,24 @@ public class BaseAchievementScript : MonoBehaviour
     #endregion
     protected GameManager gameManager = null;
     protected ChallengeSaveData challengeSaveData = null;
+    [SerializeField]
+    protected GameObject achievementImage2 = null;
+    [SerializeField]
+    protected Transform targetTransform = null;
+    protected bool achieve2Spawned = false;
 
     protected void Start()
     {
         gameManager = GameManager.Instance;
         challengeSaveData = gameManager.GetChallengeSaveData();
         SetAchievement();
+    }
+    public void OnClickAchievementImage()
+    {
+        if (achieve2Spawned)
+            Destroy(achievementImage2);
+        else
+            Instantiate(achievementImage2, targetTransform);
     }
     void SetAchievement()
     {

@@ -87,7 +87,7 @@ public class NoticeAI : MonoBehaviour
         bool isAtSameX = (playerPos.x < (transform.position.x + 0.5f)) && (playerPos.x > (transform.position.x - 0.5f));
 
 
-        Debug.Log(MoveAI.getIsYBigger);
+        //Debug.Log(MoveAI.getIsYBigger);
 
         if (MoveAI.getIsYBigger)
         {
@@ -103,13 +103,13 @@ public class NoticeAI : MonoBehaviour
     void LookForPlayer()
     {
         Debug.Log($"{transform.position} AI 위치 값");
-        //Debug.Log($"{playerMove.getPlayerHeading} 플레이어 목표 값");
+        Debug.Log($"{playerMove.getPlayerHeading} 플레이어 목표 값");
         bool isAtHeading = CheckPlayer(playerMove.getPlayerHeading);
 
         Debug.Log($"{player.transform.position} 플레이어 현재 값");
         bool isAtSight   = CheckPlayer(player.transform.position);
 
-        if(isAtSight)
+        if(isAtSight || isAtHeading)
         {
             Debug.Log("시아 안");
             notice = (notice == 3) ? 3 : ++notice;

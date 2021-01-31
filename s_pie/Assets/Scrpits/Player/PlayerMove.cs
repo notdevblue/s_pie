@@ -63,6 +63,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         turnManager = FindObjectOfType<TurnManager>();
+
         #region 널레퍼런스 방지용 코드 (유니티 에디터에서만 실행됨)
 #if UNITY_EDITOR
         NullCheck();
@@ -172,7 +173,7 @@ public class PlayerMove : MonoBehaviour
     private bool NoPassingCheck(Direction direction) //지나갈 수 없는 곳인지 확인
     {
         //플레이어가 가는 방향에 layer가 NoPassing인 박스 컬라이더가 있으면 지나가지 못한다.
-
+        
         RaycastHit2D hit;
         Vector2 start = transform.localPosition;
         Vector2 end = transform.localPosition;
@@ -233,14 +234,15 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             transform.localPosition += targetPosition;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
         }
         animator.SetBool("Move", false);
-        turnManager.EndPlayerTurn(1); // 플레이어 턴 종료
+        
 
         yield return new WaitForSeconds(0.1f);
         boxCollider2D.enabled = false;
         boxCollider2D.enabled = true;
+        turnManager.EndPlayerTurn(1); // 플레이어 턴 종료
         isMove = false;
     }
 }

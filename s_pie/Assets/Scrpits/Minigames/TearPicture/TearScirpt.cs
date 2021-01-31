@@ -262,6 +262,8 @@ public class TearScirpt : MonoBehaviour
         if (a && !pictureTeared)
         {
             pictureTeared = true;
+            GameObject tearObject = GameObject.Find("Tear_image_0");
+            Destroy(tearObject);
             spriteRenderer.sprite = tearedPicture;
             audi.Play();
             gameManager.SetComment(gameOver_Comment);

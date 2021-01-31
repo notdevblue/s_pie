@@ -113,6 +113,7 @@ public class dialog : MonoBehaviour
 
     public void DialogStart(int index)
     {
+        PlayerMove.isPossible = false;
         dialog_co = dialog.instance.dialog_system_start(index);
         StartCoroutine(dialog_co);
     }
@@ -124,6 +125,7 @@ public class dialog : MonoBehaviour
 
         if (text_seq.Count == 0)                                        //다음 지문이 없다면
         {
+            PlayerMove.isPossible = true;
             dialog_obj.gameObject.SetActive(false);                     //다이얼로그 끄기
         }
         StopCoroutine(seq_);                                            //실행중인 코루틴 종료

@@ -6,34 +6,45 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private Inventory theInventory;  // Inventory.cs
-
-    [SerializeField]
-    private GameObject clickerMinigame = null;
-    [SerializeField]
-    private GameObject tearPictureMinigame = null;
-    [SerializeField]
-    private GameObject mainCam = null;
-    [SerializeField]
-    private GameObject secCam = null;
-
-    [SerializeField]
-    private GameObject player = null;
-
-    public static UIManager UM;
-
-    private ChallengeManager challengeManager = null;
-    private GameManager gameManager = null;
-    
-
+    [SerializeField] private        Inventory        theInventory        = null; // Inventory.cs
+    [SerializeField] private        GameObject       clickerMinigame     = null;
+    [SerializeField] private        GameObject       tearPictureMinigame = null;
+    [SerializeField] private        GameObject       mainCam             = null;
+    [SerializeField] private        GameObject       secCam              = null;
+    [SerializeField] private        GameObject       player              = null;
+    [SerializeField] private        Slider           slider              = null; // 볼륨 조절 용
+    [SerializeField] private        GameObject       virtualPad          = null; // 멀티 플렛폼 용도 (PC버전에서는 가상패드 불필요)
+                     public  static UIManager        UM                  = null;
+                     private        ChallengeManager challengeManager    = null;
+                     private        GameManager      gameManager         = null;
+                     private        AudioSource      clip                = null;
+   
 
     void Awake() => UM = this;
+
     private void Start()
     {
         challengeManager = ChallengeManager.Instance;
         gameManager = GameManager.Instance;
+
+        clip = GetComponent<AudioSource>();
+        slider.maxValue = 1.0f;
+        slider.minValue = 0f;
+        slider.value    = 0.2f;
+
+        // 놀랍게도 멀티플레폼용 코드
+#if UNITY_STANDALONE
+        virtualPad.gameObject.SetActive(false);
+#endif
+
     }
+
+    private void Update()
+    {
+        // 볼륨 조정 용
+        clip.volume = slider.value;
+    }
+
 
     //변수 선언
     public string curBtn; // awl = 송곳, Thur = 츄르, Cat_01 = 고양이1, Cat_02 = 고양이2, EmptyBox = 빈상자, Clicker = 클리커미니게임

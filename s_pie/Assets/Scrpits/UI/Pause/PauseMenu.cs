@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     // TODO : 키보드 입력 막아야 함
     public void Pause()
     {
+        PlayerMove.isPossible = !PlayerMove.isPossible;
         pauseCanv.gameObject.SetActive(!pauseCanv.isActiveAndEnabled);
         uiCanvas .gameObject.SetActive(!uiCanvas.isActiveAndEnabled);
     }

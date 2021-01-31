@@ -74,6 +74,8 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         boxCollider2D = GetComponent<BoxCollider2D>();
+
+        isPossible = true;
     }
 
 

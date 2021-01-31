@@ -11,19 +11,19 @@ public class NoticeAI : MonoBehaviour
 
 
     #region 변수들
-    private        float    maxX              = 0.0f;
-    private        float    minX              = 0.0f;
-    private        float    maxY              = 0.0f;
-    private        float    minY              = 0.0f;
-    private        int      notice            = 0;
-    private        SpriteAI anim              = null;
-    private        GameManager gameManager    = null;
-    private        PlayerMove  playerMove         = null;
-    private        string   commentText       = "정찰 요원에게 걸려서 임무를 실패했네, 다음부턴 더 조심하게나."; // 이 AI에 의하여 게임이 오버됐을 때 뜨는 comment
-    private static bool     isFound           = false;
-    private static bool     isAINoticedPlayer = false;
-    public  static bool     getIsFound        { get { return isFound; } } // 으으흠.
-    public  static bool     getIsAINoticed    { get { return isFound; } } // 으흐음.
+    private        float       maxX              = 0.0f;
+    private        float       minX              = 0.0f;
+    private        float       maxY              = 0.0f;
+    private        float       minY              = 0.0f;
+    private        int         notice            = 0;
+    private        SpriteAI    anim              = null;
+    private        GameManager gameManager       = null;
+    private        PlayerMove  playerMove        = null;
+    private        string      commentText       = "정찰 요원에게 걸려서 임무를 실패했네, 다음부턴 더 조심하게나."; // 이 AI에 의하여 게임이 오버됐을 때 뜨는 comment
+    private static bool        isFound           = false;
+    private static bool        isAINoticedPlayer = false;
+    public  static bool        getIsFound        { get { return isFound; } } // 으으흠.
+    public  static bool        getIsAINoticed    { get { return isFound; } } // 으흐음.
 
 
 
@@ -125,7 +125,6 @@ public class NoticeAI : MonoBehaviour
 
     void NoticePlayer()
     {
-        return;
         if(notice == 2)
         {
             isAINoticedPlayer = true;

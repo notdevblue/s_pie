@@ -21,11 +21,14 @@ public class PlayerMove : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
 
-
-    public  Vector2 getPlayerHeading { get; private set; }
+    // 키보드 입력 막는 용도
+    public static bool isPossible = true;
+    
+    #region 코드리뷰 추가 코드
+    public Vector2 getPlayerHeading { get; private set; }
     private void DoSetPlayerHeading(Direction myDirection)
     {
-        Debug.Log($"{transform.position} 플레이어 현재 위치");
+        //Debug.Log($"{transform.position} 플레이어 현재 위치");
 
         Vector2 playerPos = transform.position;
         switch (myDirection)
@@ -45,8 +48,9 @@ public class PlayerMove : MonoBehaviour
         }
         getPlayerHeading = playerPos;
 
-        Debug.Log($"{getPlayerHeading} 플레이어 목표 위치");
+        //Debug.Log($"{getPlayerHeading} 플레이어 목표 위치");
     }
+    #endregion
 
     private enum Direction
     {
@@ -88,14 +92,17 @@ public class PlayerMove : MonoBehaviour
     #region 영상용 코드 (WASD 움직임)
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-            ClickUp();
-        if (Input.GetKeyDown(KeyCode.S))
-            ClickDown();
-        if (Input.GetKeyDown(KeyCode.A))
-            ClickLeft();
-        if (Input.GetKeyDown(KeyCode.D))
-            ClickRight();
+        if(isPossible)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+                ClickUp();
+            if (Input.GetKeyDown(KeyCode.S))
+                ClickDown();
+            if (Input.GetKeyDown(KeyCode.A))
+                ClickLeft();
+            if (Input.GetKeyDown(KeyCode.D))
+                ClickRight();
+        }
     }
     #endregion
 
@@ -188,11 +195,11 @@ public class PlayerMove : MonoBehaviour
 
         if (hit.transform != null)
         {
-            Debug.Log("플레이어가 뭔가를 찾음");
+            //Debug.Log("플레이어가 뭔가를 찾음");
             return true;
         }
 
-        Debug.Log("플레이어가 못 찾음");
+        //Debug.Log("플레이어가 못 찾음");
         return false;
     }
 

@@ -33,7 +33,7 @@ public class CameraShake : MonoBehaviour
         while(startTime + shakeTime > Time.time)
         {
             shakeTarget.transform.localPosition= new Vector3(Random.Range(-amount * shakeAmount, amount * shakeAmount),
-                                                            Random.Range(-amount * shakeAmount, amount * shakeAmount), 0.0f);
+                                                            Random.Range(-amount * shakeAmount, amount * shakeAmount), 0.0f); // TODO : 오브젝트 z값으로 바꿔야함
 
             yield return waitFrame;
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BiancaMove : MonoBehaviour
 {
+    // 따로 클래스를 파야 함
     [SerializeField] private float moveSpeed    = 3.0f;
     [Header("걷기 이동속도 (moveSpeed * walkBoost)")]
     [SerializeField] private float walkBoost    = 0.8f;
@@ -14,7 +15,8 @@ public class BiancaMove : MonoBehaviour
     [Header("대쉬 쿨타임")]
     [SerializeField] private float dashCooldown = 2.0f;
 
-    [Header("키 매핑")]
+
+    [Header("키 매핑")] // 따로 클래스를 파야 함
     public KeyCode up       = KeyCode.UpArrow;
     public KeyCode down     = KeyCode.DownArrow;
     public KeyCode left     = KeyCode.LeftArrow;
@@ -43,6 +45,7 @@ public class BiancaMove : MonoBehaviour
         Dash();
     }
 
+    // 부모 클래스에서 상속받아야 함, 또는 인터페이스
     private void Dash()
     {
         if (Input.GetKeyDown(sprint) && dashPressedTime + dashCooldown < Time.time && !pStat.isDashing) // TODO : 피격시 뒤로 밀려나는 효과 있을때는 대쉬 못하게 해야함 // TODO : 오 가독성 이런
@@ -58,6 +61,7 @@ public class BiancaMove : MonoBehaviour
         }
     }
 
+    // 부모 클래스에서 상속받아야 함, 또는 인터페이스
     private void Run()
     {
         keyInputVector = Vector3.zero;

@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 s_pie/Library/
 s_pie/Temp/
+s_pie/Assets/Scenes/TestScene/Stage1TestScene.unity
+s_pie/Assets/Scenes/TestScene/Stage1TestScene.unity.meta
+s_pie/Logs/

@@ -10,12 +10,19 @@ public class MouseSelect : MonoBehaviour
     void Update()
     {
         FollowMouse();
+        SelectMouse();
     }
 
     private void FollowMouse()
     {
         trmCollider.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 
-        // TODO : 마우스 클릭
+    private void SelectMouse()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            LightSelectManager.Select();
+        }
     }
 }

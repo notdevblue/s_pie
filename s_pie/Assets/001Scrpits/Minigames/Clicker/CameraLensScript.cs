@@ -9,6 +9,9 @@ public class CameraLensScript : MonoBehaviour
     private ClickerManager clickerManager = null;
     private GameManager gameManager = null;
 
+    [SerializeField]
+    private AudioSource audi = null;
+
 
 
     private int cameraHp = 10;
@@ -19,7 +22,9 @@ public class CameraLensScript : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         clickerManager = FindObjectOfType<ClickerManager>();
+
         anim = GetComponent<Animator>();
+        audi = GetComponent<AudioSource>();
 
         firstCameraHp = cameraHp;
     }
@@ -32,9 +37,14 @@ public class CameraLensScript : MonoBehaviour
     public void OnClick()
     {
         if (!clickerManager.GetGameIsClear() && !gameManager.GetGameOver())
+        {
             cameraHp--;
+            audi.Play();
+        }
         if (cameraHp <= 0)
+        {
             clickerManager.SetGameIsClear(true);
+        }
     }
     void AnimationPlay()
     {

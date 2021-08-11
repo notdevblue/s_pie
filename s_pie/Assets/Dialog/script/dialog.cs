@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 [System.Serializable]
 public class dialog_info
 {
-    public Sprite standing;
+    public int standing;
     public string name;
     [TextArea(3, 5)]
     public string content;
@@ -21,20 +22,28 @@ public class Dialog_cycle
     public bool check_cycle_read;
 }
 
+[System.Serializable]
+public class DialogText
+{
+    public string version;
+    public List<Dialog_cycle> textList;
+}
 
 public class dialog : MonoBehaviour
 {
+    [SerializeField] private List<Sprite> imageList = new List<Sprite>();
+
     [SerializeField]
     public static dialog instance = null;
-    public List<Dialog_cycle> dialog_cycles = new List<Dialog_cycle>(); //대화 지문 그룹
-    public Queue<string> text_seq = new Queue<string>();                //대화 지문들의 내용을 큐로 저장한다.(끝점을 쉽게 판단하기 위해)
-    public string name_;                                                //임시로 저장할 대화 지문의 이름
-    public string text_;                                                //임시로 저장할 대화 지문의 내용
-    public Image standing_I;
-    public Text nameing;                                                //대화 지문 오브젝트에 있는 것을 표시할 오브젝트
-    public Text DialogT;                                                //대화 지문 내용 오브젝트
-    public Text Next_T;                                               //다음 버튼
-    public GameObject dialog_obj;                                       //대화 지문 오브젝트
+    private List<Dialog_cycle> dialog_cycles = new List<Dialog_cycle>(); //대화 지문 그룹
+    private Queue<string> text_seq = new Queue<string>();                //대화 지문들의 내용을 큐로 저장한다.(끝점을 쉽게 판단하기 위해)
+    private string name_;                                                //임시로 저장할 대화 지문의 이름
+    private string text_;                                                //임시로 저장할 대화 지문의 내용
+    private Image standing_I;
+    private Text nameing;                                                //대화 지문 오브젝트에 있는 것을 표시할 오브젝트
+    private Text DialogT;                                                //대화 지문 내용 오브젝트
+    private Text Next_T;                                               //다음 버튼
+    private GameObject dialog_obj;                                       //대화 지문 오브젝트
 
     private GameObject uiCanvas = null;
 
@@ -61,6 +70,11 @@ public class dialog : MonoBehaviour
             Destroy(gameObject);
 
         //DontDestroyOnLoad(gameObject);
+
+        TextAsset dJson = Resources.Load("Dialog/DialogText") as TextAsset;
+        DialogText dialogText = JsonUtility.FromJson<DialogText>(dJson.ToString());
+
+        dialog_cycles = dialogText.textList;
     }
     public IEnumerator dialog_system_start(int index)//다이얼로그 출력 시작
     {
@@ -78,7 +92,7 @@ public class dialog : MonoBehaviour
         dialog_obj.gameObject.SetActive(true);
         for (int i = 0; i < dialog_cycles[index].info.Count; i++) //대화 단위를 순서대로 출력
         {
-            standing_I.sprite = dialog_cycles[index].info[i].standing;
+            standing_I.sprite = imageList[dialog_cycles[index].info[i].standing];
                 Color color = standing_I.color;
             if(standing_I.sprite == null)
             {

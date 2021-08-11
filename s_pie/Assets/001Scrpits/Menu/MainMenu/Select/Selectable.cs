@@ -2,37 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selectable : MonoBehaviour
+abstract public class Selectable : MonoBehaviour
 {
-    [Header("카메라 이동 관련")]
-    [Header("로딩화면 위치")]
-    public Transform loadingTrm = null;
-
-    [Header("카메라 이동 위치")]
-    public Transform moveTo = null;
-
-    [Header("이동 시간")]
-    public float duration = 2.0f;
-
-    [Header("조명 관련")]
-    [Header("인덱스")]
-    public int       index  = 0;
-
+    public int index;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (LightSelectManager.isSelected) return;
         LightSelectManager.LightOn(index);
+        OnCursorUp();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (LightSelectManager.isSelected) return;
         LightSelectManager.LightOff(index);
+        OnCursorLeft();
     }
 
-    public void OnSelected()
-    {
-        CameraMover.MoveCamera(moveTo.position, duration);
-    }
+    /// <summary>
+    /// 마우스 포인터가 위에 있을 때
+    /// </summary>
+    abstract public void OnCursorUp();
+
+    /// <summary>
+    /// 마우스 포인터가 이것을 떠날 때
+    /// </summary>
+    abstract public void OnCursorLeft();
+
+    /// <summary>
+    /// 선택되었을 때
+    /// </summary>
+    abstract public void OnSelected();
 }

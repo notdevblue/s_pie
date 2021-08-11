@@ -24,7 +24,7 @@ public class LightSelectManager: MonoBehaviour
     // isLightsOn 리스트 초기화
     private void SetLightsStatusList()
     {
-        for (int count = 0; count < lights.Count; ++count) // lights 리스트 크기와 같게 만듬
+        for (int count = 0; count < selectables.Count; ++count) // lights 리스트 크기와 같게 만듬
         {
             isLightsOn.Add(false);
         }
@@ -33,15 +33,23 @@ public class LightSelectManager: MonoBehaviour
     // 조명 키는 함수
     static public void LightOn(int index)
     {
-        inst.lights[index].SetTrigger("On");
         inst.isLightsOn[index] = true;
+
+        if (inst.lights.Count > index)
+        {
+            inst.lights[index].SetTrigger("On");
+        }
     }
 
     // 조명 끄는 함수
     static public void LightOff(int index)
     {
-        inst.lights[index].SetTrigger("Off");
         inst.isLightsOn[index] = false;
+
+        if (inst.lights.Count > index) // TODO : 고쳐야 함
+        {
+            inst.lights[index].SetTrigger("Off");
+        }
     }
 
     /// <summary>

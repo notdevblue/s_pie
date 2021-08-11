@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class CameraMover : MonoBehaviour
 {
+    [SerializeField] private Transform mainTrm = null;
+
     static private CameraMover inst = null;                   // static 함수 접근 용
 
     private WaitForEndOfFrame wait = new WaitForEndOfFrame(); // 계속 인스턴스를 만들고싶지 않았음
     private Transform         cam  = null;                    // 간결한 코드를 위해
-
+    
     public delegate void Callback();                          // 콜백용
 
-
+    private bool isMoving = false; // 카메라 이동 중인지
 
     private void Awake()
     {
@@ -31,16 +33,24 @@ public class CameraMover : MonoBehaviour
         inst.cam.position = new Vector3(pos.x, pos.y, inst.cam.position.z);
     }
 
+    /// <summary>
+    /// 카메라를 메인 메뉴로 이동시킵니다.
+    /// </summary>
+    /// <param name="duration">이동 시간</param>
+    static public void MoveToMainMenu(float duration, Callback callback = null)
+    {
+        inst.StartCoroutine(inst.CamMovement(inst.mainTrm.position, duration, callback));
+    }
 
     /// <summary>
     /// 카메라를 이동시킵니다.
     /// </summary>
+    /// <param name="duration">이동 시간</param>
     /// <param name="pos">이동시킬 위치</param>
     static public void MoveCamera(Vector2 pos, float duration, Callback callback = null)
     {
         inst.StartCoroutine(inst.CamMovement(pos, duration, callback));
     }
-
     private IEnumerator CamMovement(Vector2 pos, float duration, Callback callback)
     {
         Vector2 origin = cam.position;
@@ -49,8 +59,9 @@ public class CameraMover : MonoBehaviour
 
         // Sin함수 용도
         float degree = 0;
-        float add    = Mathf.PI / 2.0f / duration; 
+        float add    = Mathf.PI / 2.0f / duration;
 
+        isMoving = true;
 
         while (degree <= Mathf.PI / 2.0f)
         {
@@ -62,7 +73,8 @@ public class CameraMover : MonoBehaviour
 
             yield return wait;
         }
-        
+
+        isMoving = false;
         callback?.Invoke();
     }
 }

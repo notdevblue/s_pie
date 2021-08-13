@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OliberLightsOffState : StateMachineBehaviour
+public class MenuLightsOffState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,7 +19,8 @@ public class OliberLightsOffState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CameraMover.MoveToMainMenu(2.0f, () => LightSelectManager.isSelected = false);
+        FocusManager.SetFocus(FocusManager.FocusTarget.Main);
+        CameraMover.MoveToMainMenu(2.0f);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -19,7 +19,6 @@ public class ToMainMenu : Selectable
 
     public override void OnSelected()
     {
-        Debug.Log("Off");
-        animator.SetTrigger("Off"); // 조명을 끔, OliberLightsOffState 가 알아서 카메라 움직여 줌
+        animator.SetTrigger("Off"); // 조명을 끔, MenuLightsOffState 가 알아서 카메라, Focus 설정해 줌
     }
 }

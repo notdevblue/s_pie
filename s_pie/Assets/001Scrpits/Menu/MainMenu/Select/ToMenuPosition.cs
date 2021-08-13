@@ -13,17 +13,23 @@ public class ToMenuPosition : Selectable
     [Header("카메라 이동 시간")]
     public float duration = 2.0f;
 
+    [Header("작동할 라이트")]
+    public Animator cellingLight = null;
 
     public override void OnCursorUp()
     {
-        if (LightSelectManager.isSelected) return;
-        LightSelectManager.LightOn(index); // 해당하는 인덱스의 조명을 킨다
+        if (cellingLight != null)
+        {
+            cellingLight.SetTrigger("On");
+        }
     }
 
     public override void OnCursorLeft()
     {
-        if (LightSelectManager.isSelected) return;
-        LightSelectManager.LightOff(index); // 해당하는 인덱스의 조명을 끈다
+        if (cellingLight != null)
+        {
+            cellingLight.SetTrigger("Off");
+        }
     }
 
     public override void OnSelected()

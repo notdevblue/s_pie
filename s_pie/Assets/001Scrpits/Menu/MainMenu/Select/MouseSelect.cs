@@ -22,7 +22,7 @@ public class MouseSelect : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            LightSelectManager.Select();
+            SelectManager.Select();
         }
     }
 }

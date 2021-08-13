@@ -5,13 +5,32 @@ using UnityEngine;
 public class FocusManager : MonoBehaviour
 {
     // 카메라가 비추고 있는 메뉴
-    private bool[] targets = new bool[4] { true, false, false, false };
+    // FocusTarget Enum 과 같은 순서가 됩니다.
+    private bool[] targets;
 
     static private FocusManager inst = null; // static 함수 접근 용도
 
     private void Awake()
     {
         inst = this;
+
+    }
+    private void Start()
+    {
+        InitTargetsArray();
+    }
+
+    // bool[] targets 초기화
+    private void InitTargetsArray()
+    {
+        targets = new bool[(int)FocusTarget.END_OF_ENUM];
+        targets[(int)FocusTarget.Main] = true;
+
+        // 처음에 카메라는 Main 을 비추고 있기 때문
+        for (int i = 1; i < (int)FocusTarget.END_OF_ENUM; ++i)
+        {
+            targets[i] = false;
+        }
     }
 
     public enum FocusTarget
@@ -20,6 +39,7 @@ public class FocusManager : MonoBehaviour
         Oliber,
         Bianca,
         Option,
+        StageSelect,
 
         END_OF_ENUM // 반복문 에서 사용하기 위함
     }

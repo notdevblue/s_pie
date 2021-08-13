@@ -4,17 +4,17 @@ using UnityEngine;
 
 abstract public class Selectable : MonoBehaviour
 {
-    public int index;
+    [HideInInspector] public int index; // SelectManager 에서 관리 위한 index
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LightSelectManager.LightOn(index);
+        SelectManager.ToggleSelected(index);
         OnCursorUp();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        LightSelectManager.LightOff(index);
+        SelectManager.ToggleSelected(index);
         OnCursorLeft();
     }
 

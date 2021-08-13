@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &541638925305716622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541638925305716620}
+  - component: {fileID: 541638925305716623}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &541638925305716620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541638925305716622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &541638925305716623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541638925305716622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d3477c437e3bd4c8e45bf2ceda5f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageList:
+  - {fileID: -524559491155028263, guid: 15cd85924b23c3e47b86100ea00f10a2, type: 3}
+  - {fileID: -8079357727930904666, guid: 419076ba08918d841bdef07a92ec7f14, type: 3}
+  - {fileID: -8903527100886083876, guid: 419076ba08918d841bdef07a92ec7f14, type: 3}
+  - {fileID: -7317400572499623495, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55, type: 3}
+  - {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14, type: 3}
+  - {fileID: 8736879404337289822, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55, type: 3}
+  - {fileID: 5585321326119974332, guid: 419076ba08918d841bdef07a92ec7f14, type: 3}
+  - {fileID: 6448633719766501388, guid: 992a4cfa5aa14af4bbb2d38df7bb0e55, type: 3}
+  - {fileID: 639315690409418565, guid: 419076ba08918d841bdef07a92ec7f14, type: 3}
+  delay: 0.025
+  running: 0

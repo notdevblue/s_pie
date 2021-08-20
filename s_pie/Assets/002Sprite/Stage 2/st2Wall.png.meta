@@ -4,52 +4,52 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 277524106503906489
-    second: WallCenterBottomEnd
+    second: st2Wall_0
   - first:
       213: 812181478061924255
-    second: WallT
+    second: st2Wall_1
   - first:
       213: -8896275241058350545
-    second: WallTopEnd2
+    second: st2Wall_2
   - first:
       213: -8789646507845909526
-    second: WallTopEnd1
+    second: st2Wall_3
   - first:
       213: 89046896985062784
-    second: WallTop
+    second: st2Wall_4
   - first:
       213: 6500693574490218443
-    second: WallT2
+    second: st2Wall_5
   - first:
       213: 6278891750754153350
-    second: WallBottomEnd2
+    second: st2Wall_6
   - first:
       213: -5805391049786908008
-    second: WallBottomEnd1
+    second: st2Wall_7
   - first:
       213: -8534144715490272611
-    second: WallCenter
+    second: st2Wall_8
   - first:
       213: -3653640962620503586
-    second: WallLeft
+    second: st2Wall_9
   - first:
       213: 3508885388870370434
-    second: WallLeftCorner1
+    second: st2Wall_10
   - first:
       213: -8768195485077599087
-    second: WallRightCorner1
+    second: st2Wall_11
   - first:
       213: -9085896884358709840
-    second: WallCenterTopEnd
+    second: st2Wall_12
   - first:
       213: 2709195828320364398
-    second: WallRight
+    second: st2Wall_13
   - first:
       213: -1067306883357785627
-    second: WallLeftCorner2
+    second: st2Wall_14
   - first:
       213: 8518215687293135599
-    second: WallRightCorner2
+    second: st2Wall_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -71,6 +71,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -79,9 +80,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -93,7 +94,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,9 +103,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -147,7 +151,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WallCenterBottomEnd
+      name: st2Wall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,7 +159,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallT
+      name: st2Wall_1
       rect:
         serializedVersion: 2
         x: 256
@@ -176,7 +180,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTopEnd2
+      name: st2Wall_2
       rect:
         serializedVersion: 2
         x: 512
@@ -197,7 +201,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +214,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTopEnd1
+      name: st2Wall_3
       rect:
         serializedVersion: 2
         x: 768
@@ -218,7 +222,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +235,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTop
+      name: st2Wall_4
       rect:
         serializedVersion: 2
         x: 0
@@ -239,7 +243,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallT2
+      name: st2Wall_5
       rect:
         serializedVersion: 2
         x: 256
@@ -260,7 +264,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,15 +277,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallBottomEnd2
+      name: st2Wall_6
       rect:
         serializedVersion: 2
         x: 512
-        y: 511
+        y: 512
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallBottomEnd1
+      name: st2Wall_7
       rect:
         serializedVersion: 2
         x: 768
@@ -302,7 +306,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,7 +319,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallCenter
+      name: st2Wall_8
       rect:
         serializedVersion: 2
         x: 0
@@ -323,7 +327,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,7 +340,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallLeft
+      name: st2Wall_9
       rect:
         serializedVersion: 2
         x: 256
@@ -344,7 +348,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallLeftCorner1
+      name: st2Wall_10
       rect:
         serializedVersion: 2
         x: 512
@@ -365,7 +369,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,7 +382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallRightCorner1
+      name: st2Wall_11
       rect:
         serializedVersion: 2
         x: 768
@@ -386,7 +390,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,7 +403,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallCenterTopEnd
+      name: st2Wall_12
       rect:
         serializedVersion: 2
         x: 0
@@ -407,7 +411,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +424,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallRight
+      name: st2Wall_13
       rect:
         serializedVersion: 2
         x: 256
@@ -428,7 +432,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,7 +445,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallLeftCorner2
+      name: st2Wall_14
       rect:
         serializedVersion: 2
         x: 512
@@ -449,7 +453,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,7 +466,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallRightCorner2
+      name: st2Wall_15
       rect:
         serializedVersion: 2
         x: 768
@@ -470,7 +474,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

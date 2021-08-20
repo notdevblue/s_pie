@@ -4,10 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8756312585859785418
-    second: Bookshelf_1
+    second: Bookshelf_LongLeft
   - first:
       213: 8971319023143374128
     second: Bookshelf_2
+  - first:
+      213: -8174865062497381088
+    second: Bookshelf_ShortLeft
+  - first:
+      213: -1783843868825997599
+    second: Bookshelf_LongLeft
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -29,6 +35,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -37,9 +44,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -51,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,9 +67,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -105,43 +115,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bookshelf_1
+      name: Bookshelf_ShortLeft
       rect:
         serializedVersion: 2
         x: 0
         y: 256
         width: 512
         height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63d9b8998145b7680800000000000000
-      internalID: -8756312585859785418
+      spriteID: 0259717b98b0d8e80800000000000000
+      internalID: -8174865062497381088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bookshelf_2
+      name: Bookshelf_LongLeft
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 512
         height: 256
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03d4a259e17808c70800000000000000
-      internalID: 8971319023143374128
+      spriteID: 1ee2ed7d3738e37e0800000000000000
+      internalID: -1783843868825997599
       vertices: []
       indices: 
       edges: []

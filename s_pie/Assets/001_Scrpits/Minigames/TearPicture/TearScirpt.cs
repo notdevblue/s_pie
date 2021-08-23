@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TearScirpt : MonoBehaviour
 {
+    private GameManager gameManager = null;
+    [SerializeField]
+    private GameObject tearObject = null;
+
     private float waitTime = 0.1f;
 
     [SerializeField]
@@ -34,8 +38,6 @@ public class TearScirpt : MonoBehaviour
 
     private SpriteRenderer spriteRenderer = null;
     private AudioSource audi = null;
-
-    private GameManager gameManager = null;
 
     private bool canMouseObserved = true;
     private float time = 0f;
@@ -262,8 +264,7 @@ public class TearScirpt : MonoBehaviour
         if (a && !pictureTeared)
         {
             pictureTeared = true;
-            GameObject tearObject = GameObject.Find("Tear_image_0");
-            Destroy(tearObject);
+            tearObject.SetActive(false);
             spriteRenderer.sprite = tearedPicture;
             audi.Play();
             gameManager.SetComment(gameOver_Comment);

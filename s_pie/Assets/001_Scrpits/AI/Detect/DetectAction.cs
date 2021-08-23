@@ -7,7 +7,7 @@ public class DetectAction : MonoBehaviour
 {
     static private DetectAction inst; // static 핰수 접근 용도
 
-    private Dictionary<DetectType, Action> detectedActionDict; // 무언가를 발견했을때 실행할 detectedActionDict
+    private Dictionary<DetectType, Action> detectedActionDict = new Dictionary<DetectType, Action>(); // 무언가를 발견했을때 실행할 detectedActionDict
 
     private void Awake()
     {

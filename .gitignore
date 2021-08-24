@@ -63,3 +63,5 @@ s_pie/Temp/
 s_pie/Assets/Scenes/TestScene/Stage1TestScene.unity
 s_pie/Assets/Scenes/TestScene/Stage1TestScene.unity.meta
 s_pie/Logs/
+s_pie/UserSettings/EditorUserSettings.asset
+s_pie/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache

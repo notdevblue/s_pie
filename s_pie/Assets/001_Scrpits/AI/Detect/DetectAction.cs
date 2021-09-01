@@ -32,6 +32,24 @@ public class DetectAction : MonoBehaviour
     }
 
     /// <summary>
+    /// detectedActionList key 에 따라 호출되고 있는 action 을 하나 삭제합니다.
+    /// </summary>
+    /// <param name="key">DetectType enum</param>
+    /// <param name="action">Called when detected</param>
+    static public void DeleteDetectedAction(DetectType key, Action action)
+    {
+        if(!inst.detectedActionDict.ContainsKey(key))
+        {
+            Debug.LogError($"DetectedAction: 주어진 키: {key} 를 찾을 수 없습니다.");
+            return;
+        }
+        else
+        {
+            inst.detectedActionDict[key] -= action;
+        }
+    }
+
+    /// <summary>
     /// 주어진 key 에 따라 미리 추가된 Action 을 호출합니다.
     /// </summary>
     /// <param name="key">탐지된 오브젝트의 Key</param>
@@ -39,7 +57,7 @@ public class DetectAction : MonoBehaviour
     {
         if(!inst.detectedActionDict.ContainsKey(key))
         {
-            Debug.LogError($"DetectedAction: 주어진 키: {key} 를 찾을 수 없습니다.\r\nObjectName: {inst.gameObject.name}");
+            Debug.LogError($"DetectedAction: 주어진 키: {key} 를 찾을 수 없습니다.");
             return;
         }
 

@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Events;
+using UnityEditor;
 
 namespace AI
 {
-   [RequireComponent(typeof(CircleCollider2D))]
+   [RequireComponent(typeof(CircleCollider2D), typeof(EventCaller))]
    public class Detect : MonoBehaviour
    {
-      [Header("감지 거리")]
+      // 감지 거리
       public float radius = 1.0f;
 
-      [Header("감지할 테그들")]
-      public List<string> detectTags
-         = new List<string>();
-
       private CircleCollider2D _collider;
+      private EventCaller _eventCaller;
 
       private void Awake()
       {
-         _collider = GetComponent<CircleCollider2D>();
+         _collider    = GetComponent<CircleCollider2D>();
+         _eventCaller = GetComponent<EventCaller>();
       }
 
-      void Update()
+      private void OnTriggerEnter2D(Collider2D other)
       {
+         _eventCaller.Call(x => {
+            return (other.tag.CompareTo(x.key) == 0)
+                || (x.key.Trim() == "");
+         }, other.gameObject);
       }
    }
 }

@@ -277,7 +277,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -386,6 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551874840}
   - component: {fileID: 1551874841}
+  - component: {fileID: 1551874842}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -423,6 +424,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1551874842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551874839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634879bdfc096759581a840fcdb39c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decision:
+  - priority: 0
+    OnSatisfied:
+      m_PersistentCalls:
+        m_Calls: []
+    Key: 
 --- !u!1 &1560772332
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +533,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551874840}
     m_Modifications:
+    - target: {fileID: 1276947357, guid: f2f9728574e34b2efa814a118a23555c, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6294448988772162008, guid: f2f9728574e34b2efa814a118a23555c, type: 3}
       propertyPath: m_Name
       value: DetectUtil
@@ -562,5 +585,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1775774731837860601, guid: f2f9728574e34b2efa814a118a23555c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2f9728574e34b2efa814a118a23555c, type: 3}

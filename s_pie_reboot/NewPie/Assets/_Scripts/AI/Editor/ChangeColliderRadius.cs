@@ -20,7 +20,8 @@ public class ChangeColliderRadius : Editor
 
    public override void OnInspectorGUI()
    {
-      GUILayout.Label("감지 거리");
+      base.OnInspectorGUI();
+      GUILayout.Label("\n감지 거리");
       serializedObject.Update();
       _radius.floatValue = EditorGUILayout.FloatField(nameof(_detect.radius), _radius.floatValue);
       serializedObject.ApplyModifiedProperties();

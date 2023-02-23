@@ -15,8 +15,7 @@ namespace AI.Behaviour
         private Decision CurrentDecision
         {
             get => _currentDecision;
-            set
-            {
+            set {
                 _currentDecision.OnExiting?.Invoke();
                 _currentDecision = value;
             }
@@ -24,36 +23,32 @@ namespace AI.Behaviour
 
         private void Awake()
         {
-            if (_decisions.Count <= 0)
-            {
-                Logger.Log($"{gameObject.name}::BehaviourTree > "
-                         + "Decision 이 없습니다. 비활성화 상태로 전환합니다.");
-                Enabled = false;
-            }
+            if (_decisions.Count > 0)
+                return;
+            
+            Logger.Log($"{gameObject.name}::BehaviourTree > "
+                        + "Decision 이 없습니다. 비활성화 상태로 전환합니다.");
+            Enabled = false;
         }
 
         private void Update()
         {
-            if (!Enabled) return;
+            if (!Enabled)
+                return;
 
 #if UNITY_EDITOR
             bool failsafe = true; // decision 잘못 넣었을 때를 위해
 #endif
-            _decisions.ForEach(decision =>
-            {
+            _decisions.ForEach(decision => {
                 if (!decision.Check())
                     return;
 
-
-                if (decision.Check())
-                {
 #if UNITY_EDITOR
-                    failsafe = false;
+                failsafe = false;
 #endif
-                    if (CurrentDecision == null ||
-                       CurrentDecision.Priority < decision.Priority)
-                        CurrentDecision = decision;
-                }
+                if (CurrentDecision == null ||
+                    CurrentDecision.Priority < decision.Priority)
+                    CurrentDecision = decision;
             });
 
 #if UNITY_EDITOR

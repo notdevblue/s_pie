@@ -7,11 +7,7 @@ namespace AI
 {
    [RequireComponent(typeof(CircleCollider2D), typeof(EventCaller))]
    public class Detect : MonoBehaviour
-   {      
-      // 감지 거리
-      [HideInInspector]
-      public float radius = 1.0f;
-
+   {
       // 이벤트
       private EventCaller _eventCaller;
 
@@ -19,7 +15,6 @@ namespace AI
 
       private void Awake()
       {
-         _collider    = GetComponent<CircleCollider2D>();
          _eventCaller = GetComponent<EventCaller>();
       }
 
